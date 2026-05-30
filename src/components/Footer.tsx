@@ -46,7 +46,7 @@ export function Footer() {
 
           {/* Explore */}
           <nav aria-label="Footer">
-            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-400">
+            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-500">
               Explore
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
@@ -62,7 +62,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-400">
+            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-500">
               Services
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
@@ -78,7 +78,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-400">
+            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-500">
               Contact
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-stone-600">
@@ -103,7 +103,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-stone-100 pt-8 text-xs text-stone-400 sm:flex-row sm:items-center">
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-stone-100 pt-8 text-xs text-stone-500 sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} {site.legalName}. ABN {site.abn} ·
             Licensed &amp; insured

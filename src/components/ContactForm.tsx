@@ -19,7 +19,7 @@ const serviceOptions = [
 type Status = "idle" | "submitting" | "success" | "error";
 
 const fieldClass =
-  "w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-400 focus:border-ink focus:ring-1 focus:ring-ink/20";
+  "w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-500 focus:border-ink focus:ring-1 focus:ring-ink/20";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -174,7 +174,7 @@ export function ContactForm() {
           </>
         )}
       </button>
-      <p className="mt-3 text-center text-xs text-stone-400">
+      <p className="mt-3 text-center text-xs text-stone-500">
         By submitting, you agree to be contacted about your enquiry.
       </p>
     </form>
@@ -197,13 +197,13 @@ function Field({
     <div className={`flex flex-col gap-1.5 ${className}`}>
       <label htmlFor={name} className="text-sm font-medium text-ink">
         {label}
-        {props.required && <span className="text-stone-400"> *</span>}
+        {props.required && <span className="text-stone-500"> *</span>}
       </label>
       <input
         id={name}
         name={name}
         type={type}
-        className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-400 focus:border-ink focus:ring-1 focus:ring-ink/20"
+        className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-500 focus:border-ink focus:ring-1 focus:ring-ink/20"
         {...props}
       />
     </div>

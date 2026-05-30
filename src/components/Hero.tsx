@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section id="top" className="relative bg-white">
       <div className="mx-auto max-w-3xl px-6 pt-20 pb-14 text-center sm:pt-28">
-        <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
+        <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-stone-500">
           Melbourne · Tiling &amp; Regrouting
         </span>
 
@@ -39,7 +39,7 @@ export function Hero() {
           </a>
         </div>
 
-        <p className="mt-8 text-sm text-stone-400">
+        <p className="mt-8 text-sm text-stone-500">
           Licensed &amp; insured · {site.yearsExperience} years' experience ·
           Rated 5.0
         </p>

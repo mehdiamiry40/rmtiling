@@ -62,7 +62,7 @@ export function Faq() {
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-base font-medium text-ink transition hover:text-stone-600 [&::-webkit-details-marker]:hidden">
                   {faq.question}
                   <Plus
-                    className="h-5 w-5 shrink-0 text-stone-400 transition-transform duration-200 group-open:rotate-45"
+                    className="h-5 w-5 shrink-0 text-stone-500 transition-transform duration-200 group-open:rotate-45"
                     aria-hidden
                   />
                 </summary>

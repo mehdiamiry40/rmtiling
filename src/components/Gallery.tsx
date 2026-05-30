@@ -56,7 +56,7 @@ export function Gallery() {
                   </div>
                 </div>
                 <figcaption className="mt-4">
-                  <span className="text-xs uppercase tracking-[0.15em] text-stone-400">
+                  <span className="text-xs uppercase tracking-[0.15em] text-stone-500">
                     {project.tag}
                   </span>
                   <p className="mt-1.5 text-base font-medium text-ink">

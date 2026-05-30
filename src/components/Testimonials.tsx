@@ -54,7 +54,7 @@ export function Testimonials() {
                 </blockquote>
                 <figcaption className="mt-6 text-sm">
                   <span className="font-medium text-ink">{review.name}</span>
-                  <span className="text-stone-400">
+                  <span className="text-stone-500">
                     {" "}
                     · {review.project}, {review.location}
                   </span>
