@@ -21,94 +21,87 @@ type Service = {
 const services: Service[] = [
   {
     icon: LayoutGrid,
-    title: "Wall & Floor Tiling",
+    title: "Wall & floor tiling",
     description:
-      "Precision tiling for bathrooms, kitchens, laundries, living areas and outdoor spaces — any size, any tile.",
+      "Precision tiling for bathrooms, kitchens, laundries and outdoor spaces — any size, any tile.",
   },
   {
     icon: Paintbrush,
-    title: "Regrouting & Resealing",
+    title: "Regrouting & resealing",
     description:
-      "Bring tired, cracked or discoloured grout back to life and stop moisture getting behind your tiles.",
+      "Bring tired, cracked or discoloured grout back to life and keep moisture out.",
   },
   {
     icon: ShowerHead,
-    title: "Leaking Shower Repairs",
+    title: "Leaking shower repairs",
     description:
-      "Fix leaking showers without ripping out the tiles — fast, clean, mess-free and fully guaranteed.",
+      "Fix leaking showers without ripping out tiles — fast, clean and guaranteed.",
   },
   {
     icon: Droplets,
     title: "Waterproofing",
     description:
-      "Australian-standard waterproofing for showers, wet areas, balconies and laundries you can rely on.",
+      "Australian-standard waterproofing for showers, wet areas, balconies and laundries.",
   },
   {
     icon: Bath,
-    title: "Bathroom Renovations",
+    title: "Bathroom renovations",
     description:
-      "Complete bathroom makeovers, project-managed from demolition through to the very last seal.",
+      "Complete makeovers, project-managed from demolition through to the final seal.",
   },
   {
     icon: UtensilsCrossed,
-    title: "Kitchen Splashbacks",
+    title: "Kitchen splashbacks",
     description:
-      "Statement splashbacks and feature walls — subway, herringbone, mosaic or large format, laid perfectly.",
+      "Statement splashbacks and feature walls — subway, herringbone or mosaic.",
   },
   {
     icon: Sparkles,
-    title: "Tile & Grout Restoration",
+    title: "Tile & grout restoration",
     description:
-      "Deep cleaning, repairs and recolouring to restore the original look of tired tiles and grout lines.",
+      "Deep cleaning, repairs and recolouring to restore the original finish.",
   },
   {
     icon: Wrench,
-    title: "Silicone Reseal",
+    title: "Silicone reseal",
     description:
-      "Old, mouldy silicone replaced with a crisp, hygienic, mould-resistant finish around wet areas.",
+      "Old, mouldy silicone replaced with a crisp, hygienic, mould-resistant finish.",
   },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="bg-white py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="services" className="bg-white py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="What we do"
-          title="Tiling & regrouting services"
-          description="Whatever your tiles need — a small repair, a refresh or a full renovation — RM Tiling has it covered, start to finish."
+          eyebrow="Services"
+          title="What we do"
+          description="A small repair, a refresh or a full renovation — covered start to finish."
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 border-l border-t border-stone-200 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, i) => (
-            <Reveal key={service.title} delay={(i % 4) * 70}>
-              <article className="group h-full rounded-2xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-900/5">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-brand-100 transition group-hover:bg-brand-600 group-hover:text-white">
-                  <service.icon className="h-6 w-6" aria-hidden />
-                </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-ink">
+            <Reveal
+              key={service.title}
+              delay={(i % 4) * 60}
+              className="border-b border-r border-stone-200"
+            >
+              <div className="h-full p-8 transition-colors hover:bg-stone-50">
+                <service.icon
+                  className="h-6 w-6 text-ink"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+                <h3 className="mt-5 text-base font-medium text-ink">
                   {service.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                <p className="mt-2 text-sm leading-relaxed text-stone-500">
                   {service.description}
                 </p>
-              </article>
+              </div>
             </Reveal>
           ))}
         </div>
-
-        <Reveal className="mt-12 text-center">
-          <p className="text-slate-600">
-            Not sure what you need?{" "}
-            <a
-              href="#contact"
-              className="font-semibold text-brand-700 underline-offset-4 hover:underline"
-            >
-              Get in touch for free advice and a quote
-            </a>
-            .
-          </p>
-        </Reveal>
       </div>
     </section>
   );

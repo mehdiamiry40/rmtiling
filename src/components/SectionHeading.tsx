@@ -21,17 +21,14 @@ export function SectionHeading({
       }
     >
       <span
-        className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] ${
-          isLight ? "text-brand-300" : "text-brand-600"
+        className={`text-xs font-medium uppercase tracking-[0.2em] ${
+          isLight ? "text-white/50" : "text-stone-400"
         }`}
       >
-        <span
-          className={`h-px w-6 ${isLight ? "bg-brand-300" : "bg-brand-400"}`}
-        />
         {eyebrow}
       </span>
       <h2
-        className={`mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl ${
+        className={`mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl ${
           isLight ? "text-white" : "text-ink"
         }`}
       >
@@ -40,7 +37,7 @@ export function SectionHeading({
       {description && (
         <p
           className={`mt-4 text-lg leading-relaxed ${
-            isLight ? "text-brand-100/80" : "text-slate-600"
+            isLight ? "text-white/60" : "text-stone-500"
           }`}
         >
           {description}

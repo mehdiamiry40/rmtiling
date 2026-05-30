@@ -47,25 +47,26 @@ export function Faq() {
   };
 
   return (
-    <section id="faq" className="bg-white py-20 sm:py-24">
+    <section id="faq" className="bg-white py-24 sm:py-28">
       <div className="mx-auto max-w-3xl px-6">
         <SectionHeading
           eyebrow="FAQ"
           title="Questions, answered"
-          description="The things Melbourne homeowners ask us most. Can't find what you're after? Get in touch."
+          description="The things Melbourne homeowners ask us most."
         />
 
-        <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
+        <div className="mt-14 divide-y divide-stone-200 border-t border-stone-200">
           {faqs.map((faq, i) => (
-            <Reveal key={faq.question} delay={(i % 3) * 70}>
-              <details className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-display text-lg font-bold text-ink transition hover:text-brand-700 [&::-webkit-details-marker]:hidden">
+            <Reveal key={faq.question} delay={(i % 3) * 60}>
+              <details className="group">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-base font-medium text-ink transition hover:text-stone-600 [&::-webkit-details-marker]:hidden">
                   {faq.question}
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-700 transition group-open:rotate-45 group-open:bg-brand-600 group-open:text-white">
-                    <Plus className="h-4 w-4" aria-hidden />
-                  </span>
+                  <Plus
+                    className="h-5 w-5 shrink-0 text-stone-400 transition-transform duration-200 group-open:rotate-45"
+                    aria-hidden
+                  />
                 </summary>
-                <p className="pb-5 pr-12 text-[15px] leading-relaxed text-slate-600">
+                <p className="pb-6 pr-8 text-[15px] leading-relaxed text-stone-500">
                   {faq.answer}
                 </p>
               </details>

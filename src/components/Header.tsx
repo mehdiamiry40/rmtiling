@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { navLinks, site } from "@/lib/site";
 
@@ -10,13 +10,12 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll while the mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -26,74 +25,51 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Utility bar */}
-      <div className="hidden bg-brand-800 text-brand-50 md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-1.5 text-xs">
-          <p className="font-medium">
-            Servicing {site.serviceArea} · Free, no-obligation quotes
-          </p>
-          <div className="flex items-center gap-5">
-            <a
-              href={site.phone.href}
-              className="inline-flex items-center gap-1.5 font-semibold transition hover:text-white"
-            >
-              <Phone className="h-3.5 w-3.5" aria-hidden />
-              {site.phone.display}
-            </a>
-            <span className="text-brand-200/70">
-              Fully licensed &amp; insured
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main nav */}
       <div
-        className={`border-b transition-all duration-300 ${
+        className={`border-b transition-colors duration-300 ${
           scrolled
-            ? "border-slate-200 bg-white/90 shadow-sm backdrop-blur"
-            : "border-transparent bg-white/70 backdrop-blur"
+            ? "border-stone-200 bg-white/85 backdrop-blur"
+            : "border-transparent bg-white"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
           <a href="#top" aria-label={`${site.name} home`}>
             <Logo />
           </a>
 
-          <div className="hidden items-center gap-7 lg:flex">
+          <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-semibold text-slate-600 transition hover:text-brand-700"
+                className="text-sm text-stone-500 transition hover:text-ink"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-4">
             <a
               href={site.phone.href}
-              className="hidden items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-ink transition hover:border-brand-300 hover:bg-brand-50 sm:inline-flex"
+              className="hidden text-sm font-medium text-ink transition hover:text-stone-600 sm:block"
             >
-              <Phone className="h-4 w-4 text-brand-600" aria-hidden />
               {site.phone.display}
             </a>
             <a
               href="#contact"
-              className="hidden rounded-full bg-accent-500 px-5 py-2.5 text-sm font-bold text-ink shadow-sm shadow-accent-500/30 transition hover:bg-accent-400 sm:inline-block"
+              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700 sm:inline-block"
             >
-              Get a Free Quote
+              Get a quote
             </a>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-ink lg:hidden"
+              className="inline-flex h-9 w-9 items-center justify-center text-ink md:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
             >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </nav>
@@ -101,39 +77,38 @@ export function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="fixed inset-0 top-0 z-40 lg:hidden">
+        <div className="fixed inset-0 top-[65px] z-40 md:hidden">
           <div
-            className="absolute inset-0 bg-ink/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-white"
             onClick={() => setOpen(false)}
             aria-hidden
           />
-          <div className="absolute inset-x-0 top-0 mt-[57px] border-t border-slate-100 bg-white p-6 shadow-xl">
-            <div className="flex flex-col gap-1">
+          <div className="relative border-t border-stone-200 bg-white px-6 py-6">
+            <div className="flex flex-col">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-3 text-base font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700"
+                  className="border-b border-stone-100 py-4 text-lg font-medium text-ink"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
-            <div className="mt-4 flex flex-col gap-3 border-t border-slate-100 pt-4">
+            <div className="mt-6 flex flex-col gap-3">
               <a
                 href={site.phone.href}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-ink"
+                className="rounded-full border border-stone-300 px-5 py-3 text-center text-sm font-medium text-ink"
               >
-                <Phone className="h-4 w-4 text-brand-600" aria-hidden />
                 Call {site.phone.display}
               </a>
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-accent-500 px-5 py-3 text-center text-sm font-bold text-ink"
+                className="rounded-full bg-ink px-5 py-3 text-center text-sm font-medium text-white"
               >
-                Get a Free Quote
+                Get a free quote
               </a>
             </div>
           </div>

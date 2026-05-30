@@ -1,38 +1,19 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/*  RM Tiling — design tokens                                          */
-/*  Brand = teal (clean, water, bathrooms). Accent = amber (warm CTA). */
-/*  To rebrand, change the --color-brand-* / --color-accent-* values.  */
+/*  RM Tiling — minimalist design tokens                              */
+/*  Warm monochrome (stone neutrals) + near-black ink. No accent.     */
 /* ------------------------------------------------------------------ */
 @theme {
-  --color-brand-50: #f0fdfa;
-  --color-brand-100: #ccfbf1;
-  --color-brand-200: #99f6e4;
-  --color-brand-300: #5eead4;
-  --color-brand-400: #2dd4bf;
-  --color-brand-500: #14b8a6;
-  --color-brand-600: #0d9488;
-  --color-brand-700: #0f766e;
-  --color-brand-800: #115e59;
-  --color-brand-900: #134e4a;
-  --color-brand-950: #042f2e;
-
-  --color-accent-300: #fcd34d;
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
-
-  --color-ink: #0b1f1d;
+  --color-ink: #1c1917;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif,
-    system-ui, sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #0b1f1d;
+  --foreground: #1c1917;
 }
 
 body {
@@ -41,6 +22,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  letter-spacing: -0.011em;
 }
 
 /* Smooth in-page anchor scrolling, offset for the sticky header. */
@@ -49,7 +31,7 @@ html {
 }
 
 section[id] {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: 5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -58,30 +40,30 @@ section[id] {
   }
 }
 
-/* Subtle ceramic-tile grid pattern, used as a decorative background. */
+/* Faint hairline tile grid — a quiet nod to tiling. */
 @utility tile-grid {
   background-image: linear-gradient(
       to right,
-      color-mix(in srgb, currentColor 12%, transparent) 1px,
+      color-mix(in srgb, currentColor 9%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      color-mix(in srgb, currentColor 12%, transparent) 1px,
+      color-mix(in srgb, currentColor 9%, transparent) 1px,
       transparent 1px
     );
-  background-size: 56px 56px;
+  background-size: 44px 44px;
 }
 
-/* Reveal-on-scroll: elements fade/slide in when scrolled into view. */
+/* Subtle reveal-on-scroll. */
 @keyframes reveal-in {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
@@ -90,7 +72,7 @@ section[id] {
 }
 
 .reveal.is-visible {
-  animation: reveal-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: reveal-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -101,7 +83,7 @@ section[id] {
   }
 }
 
-/* Thin, branded scrollbar on supported browsers. */
-* {
-  scrollbar-color: var(--color-brand-300) transparent;
+::selection {
+  background: #1c1917;
+  color: #ffffff;
 }

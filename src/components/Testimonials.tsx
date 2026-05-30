@@ -1,4 +1,4 @@
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
@@ -23,7 +23,7 @@ const reviews = [
   },
   {
     quote:
-      "Fast, professional and genuinely lovely to deal with. Our kitchen splashback looks incredible and the quote was exactly what we paid. Highly recommend to anyone in Melbourne.",
+      "Fast, professional and genuinely lovely to deal with. Our kitchen splashback looks incredible and the quote was exactly what we paid. Highly recommend.",
     name: "Daniel K.",
     location: "Glen Waverley",
     project: "Kitchen splashback",
@@ -32,55 +32,32 @@ const reviews = [
 
 export function Testimonials() {
   return (
-    <section id="reviews" className="bg-white py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="reviews" className="bg-white py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Reviews"
           title="Loved by Melbourne homeowners"
-          description="We've built our reputation one happy customer at a time. Here's what a few of them have to say."
+          description="Rated 5.0 from 120+ reviews."
         />
 
-        <Reveal className="mt-6 flex items-center justify-center gap-3">
-          <span className="flex text-accent-500" aria-hidden>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-5 w-5 fill-current" />
-            ))}
-          </span>
-          <span className="text-sm font-semibold text-slate-600">
-            <span className="font-display text-base font-extrabold text-ink">
-              5.0
-            </span>{" "}
-            average from 120+ reviews
-          </span>
-        </Reveal>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 sm:grid-cols-3">
           {reviews.map((review, i) => (
-            <Reveal key={review.name} delay={i * 90}>
-              <figure className="flex h-full flex-col rounded-2xl border border-slate-200 bg-slate-50/60 p-7">
-                <Quote className="h-8 w-8 text-brand-200" aria-hidden />
-                <div className="mt-3 flex text-accent-500" aria-hidden>
+            <Reveal key={review.name} delay={i * 80}>
+              <figure className="flex h-full flex-col bg-white p-8">
+                <div className="flex gap-0.5 text-ink" aria-hidden>
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-current" />
+                    <Star key={j} className="h-3.5 w-3.5 fill-current" strokeWidth={0} />
                   ))}
                 </div>
-                <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed text-slate-700">
+                <blockquote className="mt-5 flex-1 text-[15px] leading-relaxed text-stone-700">
                   “{review.quote}”
                 </blockquote>
-                <figcaption className="mt-6 border-t border-slate-200 pt-4">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 font-display text-sm font-bold text-white">
-                      {review.name.charAt(0)}
-                    </span>
-                    <div>
-                      <p className="font-display text-sm font-bold text-ink">
-                        {review.name}
-                      </p>
-                      <p className="text-xs font-medium text-slate-500">
-                        {review.project} · {review.location}
-                      </p>
-                    </div>
-                  </div>
+                <figcaption className="mt-6 text-sm">
+                  <span className="font-medium text-ink">{review.name}</span>
+                  <span className="text-stone-400">
+                    {" "}
+                    · {review.project}, {review.location}
+                  </span>
                 </figcaption>
               </figure>
             </Reveal>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, Loader2, Phone } from "lucide-react";
+import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { site } from "@/lib/site";
 
 const serviceOptions = [
@@ -17,6 +17,9 @@ const serviceOptions = [
 ];
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+const fieldClass =
+  "w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-400 focus:border-ink focus:ring-1 focus:ring-ink/20";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -54,23 +57,22 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex h-full flex-col items-center justify-center rounded-3xl border border-brand-200 bg-brand-50/60 p-10 text-center">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-600 text-white">
-          <CheckCircle2 className="h-8 w-8" />
+      <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-stone-200 bg-white p-10 text-center">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-white">
+          <Check className="h-6 w-6" />
         </span>
-        <h3 className="mt-5 font-display text-2xl font-extrabold text-ink">
-          Thanks — request received!
+        <h3 className="mt-5 font-display text-xl font-semibold text-ink">
+          Thanks — request received
         </h3>
-        <p className="mt-2 max-w-sm text-slate-600">
+        <p className="mt-2 max-w-sm text-sm text-stone-500">
           We'll be in touch shortly to arrange your free quote. Need us sooner?
           Give us a call.
         </p>
         <a
           href={site.phone.href}
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-bold text-ink transition hover:bg-accent-400"
+          className="mt-6 inline-flex items-center justify-center rounded-full border border-stone-300 px-6 py-3 text-sm font-medium text-ink transition hover:bg-stone-50"
         >
-          <Phone className="h-4 w-4" />
-          {site.phone.display}
+          Call {site.phone.display}
         </a>
       </div>
     );
@@ -79,13 +81,13 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-brand-900/5 sm:p-8"
+      className="rounded-2xl border border-stone-200 bg-white p-6 sm:p-8"
     >
-      <h3 className="font-display text-xl font-extrabold text-ink">
+      <h3 className="font-display text-lg font-semibold text-ink">
         Request your free quote
       </h3>
-      <p className="mt-1 text-sm text-slate-500">
-        Fill in the form and we'll get back to you, usually the same day.
+      <p className="mt-1 text-sm text-stone-500">
+        We'll get back to you, usually the same day.
       </p>
 
       {/* Honeypot field — hidden from humans, catches bots. */}
@@ -98,13 +100,7 @@ export function ContactForm() {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <Field label="Name" name="name" autoComplete="name" required />
-        <Field
-          label="Phone"
-          name="phone"
-          type="tel"
-          autoComplete="tel"
-          required
-        />
+        <Field label="Phone" name="phone" type="tel" autoComplete="tel" required />
         <Field
           label="Email"
           name="email"
@@ -120,18 +116,10 @@ export function ContactForm() {
           placeholder="e.g. Brunswick"
         />
         <div className="flex flex-col gap-1.5">
-          <label
-            htmlFor="service"
-            className="text-sm font-semibold text-ink"
-          >
+          <label htmlFor="service" className="text-sm font-medium text-ink">
             Service needed
           </label>
-          <select
-            id="service"
-            name="service"
-            defaultValue=""
-            className="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30"
-          >
+          <select id="service" name="service" defaultValue="" className={fieldClass}>
             <option value="" disabled>
               Select a service…
             </option>
@@ -143,10 +131,7 @@ export function ContactForm() {
           </select>
         </div>
         <div className="flex flex-col gap-1.5 sm:col-span-2">
-          <label
-            htmlFor="message"
-            className="text-sm font-semibold text-ink"
-          >
+          <label htmlFor="message" className="text-sm font-medium text-ink">
             Tell us about your project
           </label>
           <textarea
@@ -154,7 +139,7 @@ export function ContactForm() {
             name="message"
             rows={4}
             placeholder="e.g. Regrout and reseal a leaking shower in the main bathroom."
-            className="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30"
+            className={fieldClass}
           />
         </div>
       </div>
@@ -162,10 +147,10 @@ export function ContactForm() {
       {status === "error" && (
         <p
           role="alert"
-          className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
+          className="mt-4 rounded-lg border border-stone-300 bg-stone-50 px-4 py-3 text-sm text-ink"
         >
           {error} You can also reach us on{" "}
-          <a href={site.phone.href} className="font-bold underline">
+          <a href={site.phone.href} className="font-medium underline">
             {site.phone.display}
           </a>
           .
@@ -175,7 +160,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent-500 px-6 py-3.5 text-base font-bold text-ink shadow-lg shadow-accent-500/30 transition hover:bg-accent-400 disabled:cursor-not-allowed disabled:opacity-70"
+        className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-base font-medium text-white transition hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "submitting" ? (
           <>
@@ -189,7 +174,7 @@ export function ContactForm() {
           </>
         )}
       </button>
-      <p className="mt-3 text-center text-xs text-slate-400">
+      <p className="mt-3 text-center text-xs text-stone-400">
         By submitting, you agree to be contacted about your enquiry.
       </p>
     </form>
@@ -210,15 +195,15 @@ function Field({
 } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div className={`flex flex-col gap-1.5 ${className}`}>
-      <label htmlFor={name} className="text-sm font-semibold text-ink">
+      <label htmlFor={name} className="text-sm font-medium text-ink">
         {label}
-        {props.required && <span className="text-accent-600"> *</span>}
+        {props.required && <span className="text-stone-400"> *</span>}
       </label>
       <input
         id={name}
         name={name}
         type={type}
-        className="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30"
+        className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-400 focus:border-ink focus:ring-1 focus:ring-ink/20"
         {...props}
       />
     </div>
