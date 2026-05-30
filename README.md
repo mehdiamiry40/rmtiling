@@ -6,13 +6,16 @@ in Melbourne, Australia. Built with **Next.js (App Router)**, **TypeScript** and
 
 ## Features
 
-- Modern, fully responsive single-page landing site
-- Sections: hero, stats, services, why-us, process, gallery, testimonials,
-  service areas, FAQ and a contact / quote-request form
+- Super-minimalist, modern, fully responsive design (warm monochrome theme)
+- Sections: hero, stats, services, about, why-us, process, gallery,
+  testimonials, service areas, FAQ and a contact / quote-request form
 - Working quote form (`/api/contact`) with optional email or webhook delivery
-- SEO-ready: metadata, Open Graph (auto-generated image), sitemap, robots and
-  `LocalBusiness` + `FAQ` structured data for local search
-- Accessible, keyboard-friendly, respects reduced-motion
+- Legal pages (`/privacy`, `/terms`), custom 404 and error pages
+- Floating mobile call / quote bar for high-converting mobile UX
+- Privacy-friendly analytics + Speed Insights (Vercel)
+- SEO-ready: metadata, Open Graph + Apple touch icon (auto-generated), sitemap,
+  robots, web manifest and `LocalBusiness` + `FAQ` structured data
+- Accessible: skip-to-content link, keyboard-friendly, respects reduced-motion
 - No external image dependencies — works offline and deploys anywhere
 
 ## Getting started
@@ -47,15 +50,17 @@ Section content lives next to each component in `src/components/`:
 | `components/Testimonials.tsx` | Customer reviews (currently sample text) |
 | `components/ServiceAreas.tsx` | Suburbs served |
 | `components/Faq.tsx` | Frequently asked questions |
+| `components/About.tsx` | About / founder story |
 
 > ⚠️ The testimonials and review counts are **placeholder samples** to show the
 > layout. Replace them with real customer reviews before publishing.
 
-### Brand colours
+### Theme
 
-The brand palette (teal) and accent (amber) are defined as CSS variables in
-`src/app/globals.css` under `@theme`. Change the `--color-brand-*` /
-`--color-accent-*` values to rebrand the whole site.
+The design uses a warm monochrome palette — near-black `--color-ink` plus
+Tailwind's `stone` neutrals — defined in `src/app/globals.css` under `@theme`.
+Change `--color-ink` (and swap `stone-*` for another neutral) to re-tone the
+whole site.
 
 ### Adding real project photos
 
@@ -94,3 +99,19 @@ environment variables from above, and deploy.
 
 After deploying, update `site.url` in `src/lib/site.ts` to your live domain so
 canonical URLs, the sitemap and structured data are correct.
+
+Analytics and Speed Insights are enabled automatically on Vercel — just turn
+them on in the project's **Analytics** tab. No code changes needed.
+
+## Launch checklist
+
+- [ ] Replace placeholder **phone, email, ABN and address** in `src/lib/site.ts`
+- [ ] Set `site.url` to your real domain
+- [ ] Replace the **sample testimonials** with real reviews
+- [ ] Add real **social media links** in `src/lib/site.ts`
+- [ ] Configure contact-form delivery (`CONTACT_WEBHOOK_URL` or Resend) — see above
+- [ ] Review the **Privacy Policy** and **Terms** (`src/app/privacy`, `src/app/terms`)
+      — they are sensible templates for an Australian business, but should be
+      checked against your actual practices (and ideally by a professional)
+- [ ] (Optional) Swap the gallery's CSS motifs for real project photos
+- [ ] Enable Analytics in the Vercel dashboard

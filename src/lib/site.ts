@@ -51,13 +51,17 @@ export const site = {
   },
 } as const;
 
-/** Top-level navigation links (in-page anchors). */
+/** Top-level navigation links (root-relative so they work from any page). */
 export const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "How It Works", href: "#process" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Areas", href: "#areas" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#about" },
+  { label: "Work", href: "/#gallery" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "FAQ", href: "/#faq" },
+] as const;
+
+/** Footer-only legal links. */
+export const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
 ] as const;

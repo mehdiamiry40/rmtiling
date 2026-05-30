@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { navLinks, site } from "@/lib/site";
@@ -33,19 +34,19 @@ export function Header() {
         }`}
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-          <a href="#top" aria-label={`${site.name} home`}>
+          <Link href="/" aria-label={`${site.name} home`}>
             <Logo />
-          </a>
+          </Link>
 
           <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm text-stone-500 transition hover:text-ink"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -56,12 +57,12 @@ export function Header() {
             >
               {site.phone.display}
             </a>
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700 sm:inline-block"
             >
               Get a quote
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -86,14 +87,14 @@ export function Header() {
           <div className="relative border-t border-stone-200 bg-white px-6 py-6">
             <div className="flex flex-col">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className="border-b border-stone-100 py-4 text-lg font-medium text-ink"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="mt-6 flex flex-col gap-3">
@@ -103,13 +104,13 @@ export function Header() {
               >
                 Call {site.phone.display}
               </a>
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 onClick={() => setOpen(false)}
                 className="rounded-full bg-ink px-5 py-3 text-center text-sm font-medium text-white"
               >
                 Get a free quote
-              </a>
+              </Link>
             </div>
           </div>
         </div>
