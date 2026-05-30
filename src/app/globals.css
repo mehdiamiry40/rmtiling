@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  RM Tiling — design tokens                                          */
+/*  Brand = teal (clean, water, bathrooms). Accent = amber (warm CTA). */
+/*  To rebrand, change the --color-brand-* / --color-accent-* values.  */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+  --color-brand-950: #042f2e;
+
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  --color-ink: #0b1f1d;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b1f1d;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Smooth in-page anchor scrolling, offset for the sticky header. */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Subtle ceramic-tile grid pattern, used as a decorative background. */
+@utility tile-grid {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, currentColor 12%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, currentColor 12%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 56px 56px;
+}
+
+/* Reveal-on-scroll: elements fade/slide in when scrolled into view. */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  animation: reveal-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Thin, branded scrollbar on supported browsers. */
+* {
+  scrollbar-color: var(--color-brand-300) transparent;
+}
