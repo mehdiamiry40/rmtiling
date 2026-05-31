@@ -22,7 +22,7 @@ export default function NotFound() {
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Link
           href="/"
-          className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-white transition hover:bg-stone-700"
+          className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-white transition hover:bg-brand-700"
         >
           Back to home
         </Link>

@@ -40,12 +40,12 @@ export function ServiceAreas() {
           {suburbs.map((suburb) => (
             <span
               key={suburb}
-              className="rounded-full border border-stone-200 bg-white px-4 py-1.5 text-sm text-stone-600 transition hover:border-stone-300 hover:text-ink"
+              className="rounded-full border border-stone-200 bg-white px-4 py-1.5 text-sm text-stone-600 transition hover:border-brand-300 hover:bg-brand-50 hover:text-brand"
             >
               {suburb}
             </span>
           ))}
-          <span className="rounded-full bg-ink px-4 py-1.5 text-sm font-medium text-white">
+          <span className="rounded-full bg-brand px-4 py-1.5 text-sm font-medium text-white">
             + all of greater Melbourne
           </span>
         </Reveal>

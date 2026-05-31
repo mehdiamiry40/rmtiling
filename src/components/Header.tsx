@@ -43,7 +43,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-stone-500 transition hover:text-ink"
+                className="text-sm text-stone-500 transition hover:text-brand"
               >
                 {link.label}
               </Link>
@@ -53,13 +53,13 @@ export function Header() {
           <div className="flex items-center gap-4">
             <a
               href={site.phone.href}
-              className="hidden text-sm font-medium text-ink transition hover:text-stone-600 sm:block"
+              className="hidden text-sm font-medium text-ink transition hover:text-brand sm:block"
             >
               {site.phone.display}
             </a>
             <Link
               href="/#contact"
-              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700 sm:inline-block"
+              className="hidden rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand-700 sm:inline-block"
             >
               Get a quote
             </Link>
@@ -107,7 +107,7 @@ export function Header() {
               <Link
                 href="/#contact"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-ink px-5 py-3 text-center text-sm font-medium text-white"
+                className="rounded-full bg-brand px-5 py-3 text-center text-sm font-medium text-white"
               >
                 Get a free quote
               </Link>

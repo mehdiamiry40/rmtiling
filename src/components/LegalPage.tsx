@@ -19,7 +19,7 @@ export function LegalPage({
       <main id="main" className="mx-auto max-w-3xl px-6 py-16 sm:py-24">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-sm text-stone-500 transition hover:text-ink"
+          className="inline-flex items-center gap-1.5 text-sm text-stone-500 transition hover:text-brand"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden />
           Back to home

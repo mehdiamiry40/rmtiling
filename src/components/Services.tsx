@@ -86,9 +86,9 @@ export function Services() {
               delay={(i % 4) * 60}
               className="border-b border-r border-stone-200"
             >
-              <div className="h-full p-8 transition-colors hover:bg-stone-50">
+              <div className="h-full p-8 transition-colors hover:bg-brand-50">
                 <service.icon
-                  className="h-6 w-6 text-ink"
+                  className="h-6 w-6 text-brand"
                   strokeWidth={1.5}
                   aria-hidden
                 />

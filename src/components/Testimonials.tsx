@@ -44,7 +44,7 @@ export function Testimonials() {
           {reviews.map((review, i) => (
             <Reveal key={review.name} delay={i * 80}>
               <figure className="flex h-full flex-col bg-white p-8">
-                <div className="flex gap-0.5 text-ink" aria-hidden>
+                <div className="flex gap-0.5 text-accent" aria-hidden>
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star key={j} className="h-3.5 w-3.5 fill-current" strokeWidth={0} />
                   ))}

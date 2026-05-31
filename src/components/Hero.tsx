@@ -1,14 +1,14 @@
 import { ArrowRight } from "lucide-react";
 import { site } from "@/lib/site";
 
-// A quiet tonal ramp of "tile samples" — minimal, monochrome, on-theme.
-const swatches = ["bg-stone-100", "bg-stone-200", "bg-stone-400", "bg-stone-700", "bg-ink"];
+// A tonal ramp of "tile samples" — a teal brand gradient into ink.
+const swatches = ["bg-brand-100", "bg-brand-300", "bg-brand-500", "bg-brand-700", "bg-ink"];
 
 export function Hero() {
   return (
     <section id="top" className="relative bg-white">
       <div className="mx-auto max-w-3xl px-6 pt-20 pb-14 text-center sm:pt-28">
-        <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-stone-500">
+        <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-brand">
           Melbourne · Tiling &amp; Regrouting
         </span>
 
@@ -26,7 +26,7 @@ export function Hero() {
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="#contact"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-medium text-white transition hover:bg-stone-700"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-7 py-3.5 text-base font-medium text-white transition hover:bg-brand-700"
           >
             Get a free quote
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

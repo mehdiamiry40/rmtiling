@@ -5,7 +5,7 @@ export const alt = `${site.name} — ${site.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const swatches = ["#f5f5f4", "#e7e5e4", "#a8a29e", "#57534e", "#1c1917"];
+const swatches = ["#d6f1ec", "#7dcfc3", "#1f9789", "#0f7d70", "#15211f"];
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -19,7 +19,7 @@ export default function OpengraphImage() {
           justifyContent: "space-between",
           padding: 80,
           background: "#ffffff",
-          color: "#1c1917",
+          color: "#15211f",
           fontFamily: "sans-serif",
         }}
       >
@@ -34,7 +34,7 @@ export default function OpengraphImage() {
               borderRadius: 13,
               padding: 8,
               gap: 5,
-              background: "#1c1917",
+              background: "#0f7d70",
             }}
           >
             <div style={{ width: 17, height: 17, borderRadius: 4, background: "#ffffff" }} />

@@ -60,7 +60,7 @@ export function WhyChooseUs() {
           <Reveal delay={100} className="mt-8">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white transition hover:bg-stone-700"
+              className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white transition hover:bg-brand-700"
             >
               Get a free quote
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -73,7 +73,7 @@ export function WhyChooseUs() {
             <Reveal key={feature.title} delay={(i % 3) * 70}>
               <div className="flex gap-5 py-6">
                 <feature.icon
-                  className="mt-0.5 h-5 w-5 shrink-0 text-ink"
+                  className="mt-0.5 h-5 w-5 shrink-0 text-brand"
                   strokeWidth={1.5}
                   aria-hidden
                 />

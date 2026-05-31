@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export function CtaBanner() {
   return (
-    <section className="bg-ink py-24 sm:py-28">
+    <section className="bg-brand-700 py-24 sm:py-28">
       <Reveal className="mx-auto max-w-3xl px-6 text-center">
         <h2 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
           Ready to get your tiling sorted?
@@ -16,7 +16,7 @@ export function CtaBanner() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="#contact"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-medium text-ink transition hover:bg-stone-200"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-medium text-brand-700 transition hover:bg-brand-50"
           >
             Get a free quote
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

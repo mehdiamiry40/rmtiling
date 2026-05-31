@@ -57,10 +57,14 @@ Section content lives next to each component in `src/components/`:
 
 ### Theme
 
-The design uses a warm monochrome palette — near-black `--color-ink` plus
-Tailwind's `stone` neutrals — defined in `src/app/globals.css` under `@theme`.
-Change `--color-ink` (and swap `stone-*` for another neutral) to re-tone the
-whole site.
+The design uses a **deep-teal brand** palette: a primary `--color-brand` teal
+(with a full `brand-50` → `brand-900` scale), warm `stone` neutrals and a deep,
+teal-tinted `--color-ink` for text. A warm-gold `--color-accent` is reserved for
+review-star ratings. All tokens are defined in `src/app/globals.css` under
+`@theme`, so you can re-brand the whole site by changing `--color-brand` (and the
+`brand-*` scale). The brand teal is also hard-coded in a few image/icon
+generators — `src/app/icon.svg`, `apple-icon.tsx`, `opengraph-image.tsx`,
+`manifest.ts` and `components/Logo.tsx` — update those to match if you change it.
 
 ### Adding real project photos
 

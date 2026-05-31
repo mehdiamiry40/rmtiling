@@ -38,7 +38,7 @@ export function MobileCallBar() {
         </a>
         <Link
           href="/#contact"
-          className="flex flex-[1.4] items-center justify-center rounded-full bg-ink px-4 py-3 text-sm font-medium text-white"
+          className="flex flex-[1.4] items-center justify-center rounded-full bg-brand px-4 py-3 text-sm font-medium text-white"
         >
           Get a free quote
         </Link>

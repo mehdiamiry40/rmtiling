@@ -34,7 +34,7 @@ export function Gallery() {
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={(i % 3) * 70}>
               <figure className="group">
-                <div className="rounded-2xl border border-stone-200 bg-white p-4 transition-colors group-hover:border-stone-300">
+                <div className="rounded-2xl border border-stone-200 bg-white p-4 transition-colors group-hover:border-brand-300">
                   <div
                     className="grid gap-1.5"
                     style={{
@@ -47,7 +47,7 @@ export function Gallery() {
                           key={k}
                           className={`aspect-square rounded-[3px] ${
                             project.accents.includes(k)
-                              ? "bg-ink"
+                              ? "bg-brand"
                               : "bg-stone-200/70"
                           }`}
                         />

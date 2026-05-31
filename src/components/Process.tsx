@@ -39,9 +39,9 @@ export function Process() {
             <Reveal
               key={step.title}
               delay={i * 80}
-              className="border-t border-stone-200 pt-6"
+              className="border-t-2 border-brand-200 pt-6"
             >
-              <span className="font-display text-4xl font-light tracking-tight text-stone-300">
+              <span className="font-display text-4xl font-light tracking-tight text-brand-300">
                 0{i + 1}
               </span>
               <h3 className="mt-5 text-base font-medium text-ink">

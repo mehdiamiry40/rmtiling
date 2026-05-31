@@ -19,7 +19,7 @@ const serviceOptions = [
 type Status = "idle" | "submitting" | "success" | "error";
 
 const fieldClass =
-  "w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-500 focus:border-ink focus:ring-1 focus:ring-ink/20";
+  "w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-500 focus:border-brand focus:ring-1 focus:ring-brand/30";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -58,7 +58,7 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-stone-200 bg-white p-10 text-center">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-white">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white">
           <Check className="h-6 w-6" />
         </span>
         <h3 className="mt-5 font-display text-xl font-semibold text-ink">
@@ -160,7 +160,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-base font-medium text-white transition hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-70"
+        className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-base font-medium text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "submitting" ? (
           <>
@@ -203,7 +203,7 @@ function Field({
         id={name}
         name={name}
         type={type}
-        className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-500 focus:border-ink focus:ring-1 focus:ring-ink/20"
+        className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-stone-500 focus:border-brand focus:ring-1 focus:ring-brand/30"
         {...props}
       />
     </div>

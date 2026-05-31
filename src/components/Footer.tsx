@@ -36,7 +36,7 @@ export function Footer() {
                   href={s.href}
                   target={s.href.startsWith("http") ? "_blank" : undefined}
                   rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="text-stone-500 transition hover:text-ink"
+                  className="text-stone-500 transition hover:text-brand"
                 >
                   {s.label}
                 </a>
@@ -52,7 +52,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-stone-600 transition hover:text-ink">
+                  <Link href={link.href} className="text-stone-600 transition hover:text-brand">
                     {link.label}
                   </Link>
                 </li>
@@ -68,7 +68,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm">
               {services.map((service) => (
                 <li key={service}>
-                  <Link href="/#services" className="text-stone-600 transition hover:text-ink">
+                  <Link href="/#services" className="text-stone-600 transition hover:text-brand">
                     {service}
                   </Link>
                 </li>
@@ -83,12 +83,12 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-stone-600">
               <li>
-                <a href={site.phone.href} className="transition hover:text-ink">
+                <a href={site.phone.href} className="transition hover:text-brand">
                   {site.phone.display}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${site.email}`} className="transition hover:text-ink">
+                <a href={`mailto:${site.email}`} className="transition hover:text-brand">
                   {site.email}
                 </a>
               </li>
@@ -96,7 +96,7 @@ export function Footer() {
             </ul>
             <Link
               href="/#contact"
-              className="mt-5 inline-block rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700"
+              className="mt-5 inline-block rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand-700"
             >
               Get a free quote
             </Link>
@@ -113,7 +113,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition hover:text-ink"
+                className="transition hover:text-brand"
               >
                 {link.label}
               </Link>

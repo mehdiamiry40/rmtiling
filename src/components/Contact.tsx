@@ -9,7 +9,7 @@ export function Contact() {
       <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:gap-20">
         {/* Details */}
         <Reveal>
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-stone-500">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-brand">
             Get in touch
           </span>
           <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
@@ -24,7 +24,7 @@ export function Contact() {
             <ContactRow icon={Phone} label="Call us" value={site.phone.display} href={site.phone.href} />
             <ContactRow icon={Mail} label="Email us" value={site.email} href={`mailto:${site.email}`} />
             <div className="flex items-start gap-4 py-5">
-              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-stone-500" strokeWidth={1.5} aria-hidden />
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand" strokeWidth={1.5} aria-hidden />
               <div>
                 <dt className="text-xs uppercase tracking-[0.15em] text-stone-500">
                   Opening hours
@@ -68,7 +68,7 @@ function ContactRow({
 }) {
   return (
     <div className="flex items-start gap-4 py-5">
-      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-stone-500" strokeWidth={1.5} aria-hidden />
+      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-brand" strokeWidth={1.5} aria-hidden />
       <div>
         <dt className="text-xs uppercase tracking-[0.15em] text-stone-500">
           {label}

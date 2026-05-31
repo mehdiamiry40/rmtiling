@@ -1,11 +1,30 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/*  RM Tiling — minimalist design tokens                              */
-/*  Warm monochrome (stone neutrals) + near-black ink. No accent.     */
+/*  RM Tiling — brand design tokens                                   */
+/*  Deep teal brand (water · clean · trust) + warm stone neutrals     */
+/*  and a deep, teal-tinted ink. Warm gold is a secondary accent      */
+/*  reserved for review ratings.                                      */
 /* ------------------------------------------------------------------ */
 @theme {
-  --color-ink: #1c1917;
+  /* Near-black ink with a faint cool/teal undertone to tie into brand. */
+  --color-ink: #15211f;
+
+  /* Primary brand — deep teal. `brand` defaults to brand-600. */
+  --color-brand: #0f7d70;
+  --color-brand-50: #f0faf8;
+  --color-brand-100: #d6f1ec;
+  --color-brand-200: #aee3da;
+  --color-brand-300: #7dcfc3;
+  --color-brand-400: #46b2a4;
+  --color-brand-500: #1f9789;
+  --color-brand-600: #0f7d70;
+  --color-brand-700: #0c655b;
+  --color-brand-800: #0d514a;
+  --color-brand-900: #0d433e;
+
+  /* Secondary accent — warm gold, used for star ratings. */
+  --color-accent: #e0a526;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -13,7 +32,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1c1917;
+  --foreground: #15211f;
 }
 
 body {
@@ -84,6 +103,6 @@ section[id] {
 }
 
 ::selection {
-  background: #1c1917;
+  background: #0f7d70;
   color: #ffffff;
 }
