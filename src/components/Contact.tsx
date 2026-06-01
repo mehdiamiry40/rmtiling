@@ -12,7 +12,7 @@ export function Contact() {
     <section id="contact" className="bg-porcelain py-24 sm:py-28">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr]">
         {/* Details */}
-        <Reveal className="rounded-lg bg-charcoal p-7 text-white sm:p-9">
+        <Reveal className="rounded-lg bg-maroon p-7 text-white shadow-2xl shadow-maroon/20 sm:p-9">
           <span className="text-xs font-medium uppercase text-white/50">
             Get in touch
           </span>
@@ -36,7 +36,7 @@ export function Contact() {
             )}
             <ContactRow icon={Mail} label="Email us" value={site.email} href={`mailto:${site.email}`} />
             <div className="flex items-start gap-4 py-5">
-              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-clay" strokeWidth={1.5} aria-hidden />
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-white/55" strokeWidth={1.5} aria-hidden />
               <div>
                 <dt className="text-xs uppercase text-white/45">
                   Opening hours
@@ -80,7 +80,7 @@ function ContactRow({
 }) {
   return (
     <div className="flex items-start gap-4 py-5">
-      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-clay" strokeWidth={1.5} aria-hidden />
+      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-white/55" strokeWidth={1.5} aria-hidden />
       <div>
         <dt className="text-xs uppercase text-white/45">
           {label}

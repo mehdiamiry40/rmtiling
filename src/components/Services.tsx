@@ -12,7 +12,7 @@ export function Services() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow=""
-          title="Our Bathroom Renovation, Tiling and Waterproofing Services"
+          title="Services"
         />
 
         <div className="mt-16 grid gap-8 md:grid-cols-3">

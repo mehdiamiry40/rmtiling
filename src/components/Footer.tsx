@@ -22,7 +22,7 @@ export function Footer() {
   const credentialText = site.abn ? `ABN ${site.abn}` : site.serviceArea;
 
   return (
-    <footer className="bg-navy text-white">
+    <footer className="border-t-4 border-clay bg-maroon text-white">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.9fr_0.8fr]">
           <div>

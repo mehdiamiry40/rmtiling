@@ -48,7 +48,7 @@ export function Gallery() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow=""
-          title="Our Bathroom Renovation, Tiling and Waterproofing Projects"
+          title="Our Projects"
           description="Representative project-style visuals to help plan your quote. Verified RM Tiling project photos can be added as the portfolio grows."
         />
 

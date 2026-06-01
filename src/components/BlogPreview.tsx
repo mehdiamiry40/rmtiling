@@ -8,16 +8,16 @@ export function BlogPreview() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading
-            align="left"
-            eyebrow=""
-            title="Tiling and renovation advice"
-            description="Useful planning notes before you book a tiler, regrout a shower or start a bathroom renovation."
-          />
+        <SectionHeading
+          eyebrow=""
+          title="Advice"
+          description="Useful planning notes before you book a tiler, regrout a shower or start a bathroom renovation."
+        />
+
+        <div className="mt-8 text-center">
           <Link
             href="/blog"
-            className="inline-flex self-start border border-clay px-6 py-3 text-base font-semibold text-clay transition hover:bg-clay hover:text-white sm:self-auto"
+            className="inline-flex border border-clay px-6 py-3 text-base font-semibold text-clay transition hover:bg-clay hover:text-white"
           >
             View all articles
           </Link>
