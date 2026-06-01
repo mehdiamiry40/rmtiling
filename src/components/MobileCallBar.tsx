@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
@@ -38,12 +37,12 @@ export function MobileCallBar() {
             Call
           </a>
         )}
-        <Link
+        <a
           href={site.bookingHref}
           className="flex flex-[1.4] items-center justify-center bg-clay px-4 py-3 text-sm font-medium text-white"
         >
-          Book Online
-        </Link>
+          Get a Quote
+        </a>
       </div>
     </div>
   );

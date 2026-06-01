@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Mail, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { navLinks, site } from "@/lib/site";
 
@@ -37,20 +37,12 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-3">
-            {site.phone.href && (
-              <a
-                href={site.phone.href}
-                className="hidden text-[15px] font-semibold text-ink transition hover:text-clay md:block"
-              >
-                {site.phone.display}
-              </a>
-            )}
-            <Link
+            <a
               href={site.bookingHref}
               className="hidden border border-clay bg-clay px-5 py-3 text-sm font-semibold text-white transition hover:bg-maroon md:inline-flex"
             >
-              Book Online
-            </Link>
+              Get a Quote
+            </a>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -87,30 +79,13 @@ export function Header() {
               ))}
             </div>
             <div className="mt-6 flex flex-col gap-3">
-              {site.phone.href && (
-                <a
-                  href={site.phone.href}
-                  className="border border-zinc-300 bg-white px-5 py-3 text-center text-sm font-medium text-ink"
-                >
-                  Call {site.phone.display}
-                </a>
-              )}
-              {!site.phone.href && (
-                <a
-                  href={`mailto:${site.email}`}
-                  className="inline-flex items-center justify-center gap-2 border border-zinc-300 bg-white px-5 py-3 text-center text-sm font-medium text-ink"
-                >
-                  <Mail className="h-4 w-4" aria-hidden />
-                  Email us
-                </a>
-              )}
-              <Link
+              <a
                 href={site.bookingHref}
                 onClick={() => setOpen(false)}
                 className="bg-clay px-5 py-3 text-center text-sm font-medium text-white"
               >
-                Book Online
-              </Link>
+                Get a Quote
+              </a>
             </div>
           </div>
         </div>

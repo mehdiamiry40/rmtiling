@@ -1,8 +1,12 @@
 import Image from "next/image";
-import { Mail, Search } from "lucide-react";
+import { Mail } from "lucide-react";
 import { site } from "@/lib/site";
 
-const serviceOptions = ["Tiling", "Bathroom Renovations", "Waterproofing"];
+const heroHighlights = [
+  "Bathroom tiling, waterproofing & regrouting",
+  "Free fixed-price quotes",
+  "Clean workmanship from prep to finish",
+] as const;
 
 export function Hero() {
   return (
@@ -28,6 +32,17 @@ export function Hero() {
           renovations and waterproofing across Melbourne.
         </p>
 
+        <ul className="mt-8 flex w-full max-w-2xl flex-col gap-3 text-sm font-semibold text-white/90 sm:text-base">
+          {heroHighlights.map((highlight) => (
+            <li key={highlight} className="flex items-start gap-3">
+              <span className="mt-0.5 font-display text-xl leading-none text-clay" aria-hidden>
+                &gt;
+              </span>
+              <span className="leading-snug drop-shadow-sm">{highlight}</span>
+            </li>
+          ))}
+        </ul>
+
         <div className="mt-12 flex flex-col items-start justify-center gap-5 sm:flex-row sm:items-center">
           <a
             href={site.phone.href || `mailto:${site.email}`}
@@ -37,50 +52,12 @@ export function Hero() {
             {site.phone.href ? site.phone.display : "Email us"}
           </a>
           <span className="text-base text-white/88">
-            or make an{" "}
+            or{" "}
             <a href={site.bookingHref} className="underline decoration-white underline-offset-2 hover:text-white">
-              online booking
+              get a free quote
             </a>
           </span>
         </div>
-
-        <form
-          action="/#areas"
-          className="mt-10 grid w-full max-w-3xl grid-cols-1 border border-white/35 bg-white text-left shadow-2xl shadow-black/20 sm:grid-cols-[12rem_1fr_3.5rem]"
-        >
-          <label className="sr-only" htmlFor="service-search-service">
-            Service
-          </label>
-          <select
-            id="service-search-service"
-            name="service"
-            className="h-14 border-b border-zinc-300 bg-white px-4 text-base text-ink outline-none sm:border-b-0 sm:border-r"
-            defaultValue="Tiling"
-          >
-            {serviceOptions.map((option) => (
-              <option key={option}>{option}</option>
-            ))}
-          </select>
-          <label className="sr-only" htmlFor="service-search-suburb">
-            Suburb or postcode
-          </label>
-          <input
-            id="service-search-suburb"
-            name="suburb"
-            className="h-14 border-b border-zinc-300 px-4 text-base text-ink outline-none placeholder:text-zinc-500 sm:border-b-0"
-            placeholder="Suburb or Postcode"
-          />
-          <button
-            type="submit"
-            aria-label="Search service area"
-            className="flex h-14 items-center justify-center bg-clay text-white transition hover:bg-maroon"
-          >
-            <Search className="h-7 w-7" strokeWidth={1.8} aria-hidden />
-          </button>
-        </form>
-        <p className="mt-4 text-base text-white/72">
-          Search to see if we service your area
-        </p>
       </div>
     </section>
   );

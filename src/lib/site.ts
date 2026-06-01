@@ -14,13 +14,13 @@ export const site = {
   description:
     "RM Tiling are Melbourne-based tiling and regrouting specialists. Wall and floor tiling, regrouting, leaking shower repairs, waterproofing and bathroom renovations. Free quotes and careful workmanship.",
 
-  // Contact details. Leave phone blank until the real number is confirmed.
+  // Contact details.
   phone: {
-    display: "" as string,
-    href: "" as string,
+    display: "0431 257 397",
+    href: "tel:0431257397",
   },
   email: "info@rmtiling.com.au",
-  bookingHref: "/#contact",
+  bookingHref: "tel:0431257397",
 
   // Business details. Leave ABN blank until the real number is confirmed.
   abn: "",
