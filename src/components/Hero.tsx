@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { Mail, Search } from "lucide-react";
+import { Mail } from "lucide-react";
 import { site } from "@/lib/site";
-
-const serviceOptions = ["Tiling", "Bathroom Renovations", "Waterproofing"];
 
 export function Hero() {
   return (
@@ -43,44 +41,6 @@ export function Hero() {
             </a>
           </span>
         </div>
-
-        <form
-          action="/#areas"
-          className="mt-10 grid w-full max-w-3xl grid-cols-1 border border-white/35 bg-white text-left shadow-2xl shadow-black/20 sm:grid-cols-[12rem_1fr_3.5rem]"
-        >
-          <label className="sr-only" htmlFor="service-search-service">
-            Service
-          </label>
-          <select
-            id="service-search-service"
-            name="service"
-            className="h-14 border-b border-zinc-300 bg-white px-4 text-base text-ink outline-none sm:border-b-0 sm:border-r"
-            defaultValue="Tiling"
-          >
-            {serviceOptions.map((option) => (
-              <option key={option}>{option}</option>
-            ))}
-          </select>
-          <label className="sr-only" htmlFor="service-search-suburb">
-            Suburb or postcode
-          </label>
-          <input
-            id="service-search-suburb"
-            name="suburb"
-            className="h-14 border-b border-zinc-300 px-4 text-base text-ink outline-none placeholder:text-zinc-500 sm:border-b-0"
-            placeholder="Suburb or Postcode"
-          />
-          <button
-            type="submit"
-            aria-label="Search service area"
-            className="flex h-14 items-center justify-center bg-clay text-white transition hover:bg-maroon"
-          >
-            <Search className="h-7 w-7" strokeWidth={1.8} aria-hidden />
-          </button>
-        </form>
-        <p className="mt-4 text-base text-white/72">
-          Search to see if we service your area
-        </p>
       </div>
     </section>
   );
