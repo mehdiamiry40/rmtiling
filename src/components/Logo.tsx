@@ -1,12 +1,23 @@
-/**
- * RM Tiling logo: a minimal monochrome tile mark + wordmark.
- */
-export function Logo({ className = "" }: { className?: string }) {
+export function Logo({
+  className = "",
+  tone = "dark",
+}: {
+  className?: string;
+  tone?: "dark" | "light";
+}) {
+  const wordClass = tone === "light" ? "text-white" : "text-ink";
+  const placeClass = tone === "light" ? "text-white/65" : "text-ink";
+
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <LogoMark className="h-6 w-6 shrink-0" />
-      <span className="font-display text-lg font-semibold tracking-tight text-ink">
-        RM Tiling
+    <span className={`inline-flex items-center gap-4 ${className}`}>
+      <LogoMark className="h-12 w-12 shrink-0" />
+      <span className="flex flex-col leading-tight">
+        <span className={`font-display text-2xl font-semibold ${wordClass}`}>
+          RM Tiling
+        </span>
+        <span className={`text-sm font-medium sm:text-base ${placeClass}`}>
+          Tiling | Bathroom Renovations
+        </span>
       </span>
     </span>
   );
@@ -14,13 +25,13 @@ export function Logo({ className = "" }: { className?: string }) {
 
 export function LogoMark({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden>
-      <rect width="24" height="24" rx="5" fill="#1c1917" />
-      <g fill="#ffffff">
-        <rect x="5" y="5" width="6" height="6" rx="1.5" />
-        <rect x="13" y="5" width="6" height="6" rx="1.5" opacity="0.45" />
-        <rect x="5" y="13" width="6" height="6" rx="1.5" opacity="0.45" />
-        <rect x="13" y="13" width="6" height="6" rx="1.5" />
+    <svg viewBox="0 0 64 64" className={className} aria-hidden>
+      <g transform="rotate(45 32 32)">
+        <rect x="11" y="11" width="18" height="18" fill="#8f1710" />
+        <rect x="35" y="11" width="18" height="18" fill="#a62218" />
+        <rect x="11" y="35" width="18" height="18" fill="#a62218" />
+        <rect x="35" y="35" width="18" height="18" fill="#4b0507" />
+        <path d="M11 32h42M32 11v42" stroke="#ffffff" strokeWidth="3" />
       </g>
     </svg>
   );

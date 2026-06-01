@@ -10,19 +10,20 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
+import { site } from "@/lib/site";
 
 type Feature = { icon: LucideIcon; title: string; description: string };
 
 const features: Feature[] = [
   {
     icon: ShieldCheck,
-    title: "Licensed & insured",
-    description: "Fully qualified tilers and complete public liability cover.",
+    title: "Prepared properly",
+    description: "Clear scope, protected surfaces and the right materials for the job.",
   },
   {
     icon: BadgeCheck,
-    title: "15+ years' experience",
-    description: "Thousands of Melbourne bathrooms, kitchens and floors.",
+    title: `${site.yearsExperience} years' experience`,
+    description: "Practical experience across Melbourne bathrooms, kitchens and floors.",
   },
   {
     icon: ReceiptText,
@@ -36,8 +37,8 @@ const features: Feature[] = [
   },
   {
     icon: CalendarClock,
-    title: "On time, every time",
-    description: "We turn up when we say we will and finish on schedule.",
+    title: "Clear scheduling",
+    description: "We agree timing before work begins and keep you updated as the job moves.",
   },
   {
     icon: MapPin,
@@ -48,19 +49,20 @@ const features: Feature[] = [
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="bg-stone-50 py-24 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:gap-20">
+    <section id="why-us" className="bg-charcoal py-24 text-white sm:py-28">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <SectionHeading
             align="left"
             eyebrow="Why RM Tiling"
-            title="Trades you can trust in your home"
-            description="We treat every job like it's our own — quality materials, proper preparation and a finish that lasts."
+            tone="light"
+            title="Quiet confidence, not trade-site chaos"
+            description="You get a clear quote, tidy site habits, practical material choices and workmanship that respects the room around it."
           />
           <Reveal delay={100} className="mt-8">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white transition hover:bg-stone-700"
+              className="group inline-flex items-center gap-2 rounded-lg bg-clay px-6 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-ink"
             >
               Get a free quote
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -68,20 +70,22 @@ export function WhyChooseUs() {
           </Reveal>
         </div>
 
-        <div className="divide-y divide-stone-200 border-y border-stone-200">
+        <div className="grid gap-3 sm:grid-cols-2">
           {features.map((feature, i) => (
             <Reveal key={feature.title} delay={(i % 3) * 70}>
-              <div className="flex gap-5 py-6">
-                <feature.icon
-                  className="mt-0.5 h-5 w-5 shrink-0 text-ink"
-                  strokeWidth={1.5}
-                  aria-hidden
-                />
+              <div className="h-full rounded-lg border border-white/10 bg-white/[0.06] p-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-clay">
+                  <feature.icon
+                    className="h-5 w-5 shrink-0"
+                    strokeWidth={1.6}
+                    aria-hidden
+                  />
+                </div>
                 <div>
-                  <h3 className="text-base font-medium text-ink">
+                  <h3 className="mt-5 text-base font-medium text-white">
                     {feature.title}
                   </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-stone-500">
+                  <p className="mt-2 text-sm leading-relaxed text-white/58">
                     {feature.description}
                   </p>
                 </div>

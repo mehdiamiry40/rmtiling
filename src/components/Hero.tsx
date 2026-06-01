@@ -1,60 +1,86 @@
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Mail, Search } from "lucide-react";
 import { site } from "@/lib/site";
 
-// A quiet tonal ramp of "tile samples" — minimal, monochrome, on-theme.
-const swatches = ["bg-stone-100", "bg-stone-200", "bg-stone-400", "bg-stone-700", "bg-ink"];
+const serviceOptions = ["Tiling", "Bathroom Renovations", "Waterproofing"];
 
 export function Hero() {
   return (
-    <section id="top" className="relative bg-white">
-      <div className="mx-auto max-w-3xl px-6 pt-20 pb-14 text-center sm:pt-28">
-        <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-stone-500">
-          Melbourne · Tiling &amp; Regrouting
-        </span>
+    <section id="top" className="relative isolate overflow-hidden bg-maroon text-white">
+      <Image
+        src={site.heroImage.src}
+        alt={site.heroImage.alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-maroon/94 via-maroon/74 to-maroon/28" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/15" />
 
-        <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.04] tracking-tight text-ink sm:text-7xl">
-          Tiling &amp; regrouting,
-          <br />
-          done right.
+      <div className="relative mx-auto flex min-h-[620px] max-w-6xl flex-col items-start justify-center px-4 py-20 text-left sm:px-6 sm:py-24">
+        <h1 className="max-w-[22rem] break-words font-display text-5xl font-semibold leading-[0.98] text-white drop-shadow-sm sm:max-w-4xl sm:text-6xl lg:text-7xl">
+          Melbourne Bathroom Renovations &amp; Tiling
         </h1>
 
-        <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-stone-500">
-          From leaking shower repairs and regrouting to full bathroom
-          renovations — clean, durable, guaranteed workmanship across Melbourne.
+        <p className="mt-7 max-w-[21rem] break-words text-lg font-medium leading-relaxed text-white/88 sm:max-w-2xl sm:text-xl">
+          {site.name} provides high quality tiling, regrouting, bathroom
+          renovations and waterproofing across Melbourne.
         </p>
 
-        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-12 flex flex-col items-start justify-center gap-5 sm:flex-row sm:items-center">
           <a
-            href="#contact"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-medium text-white transition hover:bg-stone-700"
+            href={site.phone.href || `mailto:${site.email}`}
+            className="inline-flex min-w-44 items-center justify-center gap-2 bg-clay px-8 py-4 text-base font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-white hover:text-maroon"
           >
-            Get a free quote
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            {!site.phone.href && <Mail className="h-4 w-4" aria-hidden />}
+            {site.phone.href ? site.phone.display : "Email us"}
           </a>
-          <a
-            href={site.phone.href}
-            className="inline-flex items-center justify-center rounded-full border border-stone-300 px-7 py-3.5 text-base font-medium text-ink transition hover:bg-stone-50"
-          >
-            Call {site.phone.display}
-          </a>
+          <span className="text-base text-white/88">
+            or make an{" "}
+            <a href={site.bookingHref} className="underline decoration-white underline-offset-2 hover:text-white">
+              online booking
+            </a>
+          </span>
         </div>
 
-        <p className="mt-8 text-sm text-stone-500">
-          Licensed &amp; insured · {site.yearsExperience} years' experience ·
-          Rated 5.0
+        <form
+          action="/#areas"
+          className="mt-10 grid w-full max-w-3xl grid-cols-1 border border-white/35 bg-white text-left shadow-2xl shadow-black/20 sm:grid-cols-[12rem_1fr_3.5rem]"
+        >
+          <label className="sr-only" htmlFor="service-search-service">
+            Service
+          </label>
+          <select
+            id="service-search-service"
+            name="service"
+            className="h-14 border-b border-zinc-300 bg-white px-4 text-base text-ink outline-none sm:border-b-0 sm:border-r"
+            defaultValue="Tiling"
+          >
+            {serviceOptions.map((option) => (
+              <option key={option}>{option}</option>
+            ))}
+          </select>
+          <label className="sr-only" htmlFor="service-search-suburb">
+            Suburb or postcode
+          </label>
+          <input
+            id="service-search-suburb"
+            name="suburb"
+            className="h-14 border-b border-zinc-300 px-4 text-base text-ink outline-none placeholder:text-zinc-500 sm:border-b-0"
+            placeholder="Suburb or Postcode"
+          />
+          <button
+            type="submit"
+            aria-label="Search service area"
+            className="flex h-14 items-center justify-center bg-clay text-white transition hover:bg-maroon"
+          >
+            <Search className="h-7 w-7" strokeWidth={1.8} aria-hidden />
+          </button>
+        </form>
+        <p className="mt-4 text-base text-white/72">
+          Search to see if we service your area
         </p>
-      </div>
-
-      {/* Tile sample ramp */}
-      <div className="mx-auto max-w-4xl px-6 pb-20 sm:pb-28">
-        <div className="grid grid-cols-5 gap-2 sm:gap-3">
-          {swatches.map((bg, i) => (
-            <div
-              key={i}
-              className={`aspect-square rounded-xl border border-stone-200 ${bg}`}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -6,17 +6,23 @@ in Melbourne, Australia. Built with **Next.js (App Router)**, **TypeScript** and
 
 ## Features
 
-- Super-minimalist, modern, fully responsive design (warm monochrome theme)
-- Sections: hero, stats, services, about, why-us, process, gallery,
-  testimonials, service areas, FAQ and a contact / quote-request form
-- Working quote form (`/api/contact`) with optional email or webhook delivery
+- Cavell-inspired local trade design with burgundy headings, direct service
+  messaging, search-style service area prompt and strong quote CTAs
+- Homepage sections: hero, about, services, materials, projects, blog preview,
+  CTA and contact / quote-request form
+- SEO service pages for tiling, bathroom renovations, waterproofing,
+  regrouting and leaking shower repairs in Melbourne
+- Blog index and article pages with article metadata and internal links
+- Working quote form (`/api/contact`) with webhook/Resend delivery support and
+  a production mailto fallback
 - Legal pages (`/privacy`, `/terms`), custom 404 and error pages
 - Floating mobile call / quote bar for high-converting mobile UX
 - Privacy-friendly analytics + Speed Insights (Vercel)
-- SEO-ready: metadata, Open Graph + Apple touch icon (auto-generated), sitemap,
-  robots, web manifest and `LocalBusiness` + `FAQ` structured data
+- SEO-ready: per-page metadata, canonical URLs, Open Graph + Apple touch icon,
+  sitemap, robots, web manifest, `LocalBusiness`, service, FAQ and article
+  structured data
 - Accessible: skip-to-content link, keyboard-friendly, respects reduced-motion
-- No external image dependencies — works offline and deploys anywhere
+- Optimised local generated imagery — no external image dependency
 
 ## Getting started
 
@@ -31,6 +37,7 @@ Open [http://localhost:3000](http://localhost:3000).
 npm run build   # production build
 npm run start   # serve the production build
 npm run lint    # lint
+npm run launch-check # fail fast on missing launch-critical business config
 ```
 
 ## Customising for the business
@@ -38,41 +45,48 @@ npm run lint    # lint
 Almost everything you'll want to change lives in a single file:
 
 - **`src/lib/site.ts`** — business name, phone, email, ABN, hours, address,
-  service area, social links and the navigation. **Update the phone number,
-  email, ABN and address with the real details before going live.**
+  service area, social links and the navigation. Phone and ABN can stay blank
+  until verified; the site will run as email-first.
 
-Section content lives next to each component in `src/components/`:
+SEO service and blog content lives in `src/lib/content.ts`. Homepage section
+layout lives in `src/components/`.
 
 | Edit this file | To change |
 | --- | --- |
-| `components/Services.tsx` | The list of services |
+| `lib/content.ts` | SEO service pages and blog posts |
+| `components/Services.tsx` | Homepage service cards |
 | `components/Gallery.tsx` | Project showcase (see "Adding photos" below) |
-| `components/Testimonials.tsx` | Customer reviews (currently sample text) |
-| `components/ServiceAreas.tsx` | Suburbs served |
-| `components/Faq.tsx` | Frequently asked questions |
+| `components/Suppliers.tsx` | Materials / supplier-style trust grid |
 | `components/About.tsx` | About / founder story |
+| `components/Contact.tsx` | Contact panel and quote form placement |
 
-> ⚠️ The testimonials and review counts are **placeholder samples** to show the
-> layout. Replace them with real customer reviews before publishing.
+Only publish review counts or customer quotes after replacing the trust section
+with verified reviews you have permission to use.
 
 ### Theme
 
-The design uses a warm monochrome palette — near-black `--color-ink` plus
-Tailwind's `stone` neutrals — defined in `src/app/globals.css` under `@theme`.
-Change `--color-ink` (and swap `stone-*` for another neutral) to re-tone the
-whole site.
+The design uses a pale porcelain / burgundy / navy palette defined in
+`src/app/globals.css` under `@theme`. The key tokens are `--color-ink`,
+`--color-charcoal`, `--color-porcelain`, `--color-linen`, `--color-clay`,
+`--color-maroon`, `--color-navy` and `--color-oxide`; keep generated icon and
+Open Graph colors in sync when retinting the brand.
 
-### Adding real project photos
+### Images and real project photos
 
-The gallery uses styled CSS panels so the site looks great with zero
-dependencies. To use real photos instead, drop images into `public/` and swap
-the panel markup in `components/Gallery.tsx` for Next's `<Image>` component.
+The service, project and blog sections use generated, project-style WebP images
+stored in `public/images/generated/`. The public copy describes them as
+representative visuals, not completed RM Tiling jobs. When verified project
+photos are available, add them to `public/images/` and update the `image` and
+`alt` fields in `src/lib/content.ts`, `components/Gallery.tsx` and
+`site.heroImage` in `src/lib/site.ts`.
 
 ## Contact form delivery
 
-The quote form works immediately — submissions are validated and logged on the
-server. To actually **receive** enquiries, set one of the following (e.g. in
-`.env.local` for local dev, or your host's environment variables). See
+In development, the quote form validates submissions and logs them on the
+server if delivery is not configured. In production, the form uses a prefilled
+mailto fallback when no delivery service is configured, so enquiries are not
+silently lost. For a smoother launch, set one of the following in `.env.local`
+for local testing or your host's environment variables for production. See
 `.env.example`.
 
 **Option A — Webhook** (Zapier, Make, Slack/Discord incoming webhook, etc.):
@@ -81,15 +95,27 @@ server. To actually **receive** enquiries, set one of the following (e.g. in
 CONTACT_WEBHOOK_URL=https://...
 ```
 
+The launch check requires this to be a production `https://` URL, not localhost
+or a placeholder.
+
 **Option B — Email via [Resend](https://resend.com):**
 
 ```
 RESEND_API_KEY=re_...
 CONTACT_TO_EMAIL=info@rmtiling.com.au      # where enquiries are sent
-CONTACT_FROM_EMAIL="RM Tiling <quotes@yourdomain.com>"   # a verified sender
+CONTACT_FROM_EMAIL="RM Tiling <quotes@rmtiling.com.au>"  # a verified sender
 ```
 
-If neither is set, enquiries are logged to the server console (handy in dev).
+If neither is set, enquiries are logged to the server console in development and
+production users are prompted to send the enquiry through their email app.
+Production deploys should still use a webhook or Resend with a verified sender
+when available.
+
+## Launch check
+
+Run `npm run launch-check` before pointing the public domain at the site. It
+fails on broken launch-critical configuration and warns on optional details such
+as a missing phone number, ABN, social links or direct contact-form delivery.
 
 ## Deploy
 
@@ -105,13 +131,17 @@ them on in the project's **Analytics** tab. No code changes needed.
 
 ## Launch checklist
 
-- [ ] Replace placeholder **phone, email, ABN and address** in `src/lib/site.ts`
+- [ ] Confirm the public **email, service area and address** in `src/lib/site.ts`
+- [ ] Add the real **phone and ABN** in `src/lib/site.ts` if they should be shown
 - [ ] Set `site.url` to your real domain
-- [ ] Replace the **sample testimonials** with real reviews
-- [ ] Add real **social media links** in `src/lib/site.ts`
-- [ ] Configure contact-form delivery (`CONTACT_WEBHOOK_URL` or Resend) — see above
+- [ ] Confirm every claim is true: licence/insurance, experience, guarantee and service area
+- [ ] Add real **social media links** in `src/lib/site.ts` or leave them blank
+- [ ] Add verified customer reviews only if you have permission to publish them
+- [ ] Configure contact-form delivery (`CONTACT_WEBHOOK_URL` or Resend) for the best UX, or rely on the mailto fallback
 - [ ] Review the **Privacy Policy** and **Terms** (`src/app/privacy`, `src/app/terms`)
       — they are sensible templates for an Australian business, but should be
       checked against your actual practices (and ideally by a professional)
-- [ ] (Optional) Swap the gallery's CSS motifs for real project photos
+- [ ] Replace generated representative visuals with verified real project
+      photos when available
 - [ ] Enable Analytics in the Vercel dashboard
+- [ ] Run `npm run lint`, `npm run build` and `npm run launch-check` before connecting the public domain

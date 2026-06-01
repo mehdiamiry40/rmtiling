@@ -1,124 +1,149 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
+import { servicePages } from "@/lib/content";
 import { legalLinks, navLinks, site } from "@/lib/site";
 
-const services = [
-  "Wall & floor tiling",
-  "Regrouting & resealing",
-  "Leaking shower repairs",
-  "Waterproofing",
-  "Bathroom renovations",
-  "Kitchen splashbacks",
+const serviceAreas = [
+  "Melbourne CBD",
+  "Northern suburbs",
+  "Eastern suburbs",
+  "Bayside",
+  "Western suburbs",
+  "Greater Melbourne",
 ];
 
 const socials = [
   { label: "Instagram", href: site.social.instagram },
   { label: "Facebook", href: site.social.facebook },
   { label: "Google", href: site.social.google },
-];
+].filter((social) => social.href.startsWith("http"));
 
 export function Footer() {
+  const credentialText = site.abn ? `ABN ${site.abn}` : site.serviceArea;
+
   return (
-    <footer className="border-t border-stone-200 bg-white">
-      <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
-          {/* Brand */}
+    <footer className="bg-navy text-white">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.9fr_0.8fr]">
           <div>
-            <Logo />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-stone-500">
-              Melbourne's tiling and regrouting specialists. Clean, durable and
-              guaranteed workmanship across the city.
-            </p>
-            <div className="mt-6 flex gap-4 text-sm">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target={s.href.startsWith("http") ? "_blank" : undefined}
-                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="text-stone-500 transition hover:text-ink"
-                >
-                  {s.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Explore */}
-          <nav aria-label="Footer">
-            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-500">
-              Explore
+            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-white/70">
+              Contact Information
             </h3>
-            <ul className="mt-4 space-y-3 text-sm">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-stone-600 transition hover:text-ink">
-                    {link.label}
-                  </Link>
+            <ul className="mt-6 space-y-3 text-base text-white/85">
+              {site.phone.href && (
+                <li>
+                  <span className="font-semibold text-white">Mobile:</span>{" "}
+                  <a href={site.phone.href} className="transition hover:text-white/70">
+                    {site.phone.display}
+                  </a>
                 </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-500">
-              Services
-            </h3>
-            <ul className="mt-4 space-y-3 text-sm">
-              {services.map((service) => (
-                <li key={service}>
-                  <Link href="/#services" className="text-stone-600 transition hover:text-ink">
-                    {service}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-xs font-medium uppercase tracking-[0.15em] text-stone-500">
-              Contact
-            </h3>
-            <ul className="mt-4 space-y-3 text-sm text-stone-600">
+              )}
               <li>
-                <a href={site.phone.href} className="transition hover:text-ink">
-                  {site.phone.display}
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${site.email}`} className="transition hover:text-ink">
+                <span className="font-semibold text-white">Email:</span>{" "}
+                <a href={`mailto:${site.email}`} className="transition hover:text-white/70">
                   {site.email}
                 </a>
               </li>
-              <li>{site.serviceArea}</li>
+              {site.abn && (
+                <li>
+                  <span className="font-semibold text-white">ABN:</span>{" "}
+                  {site.abn}
+                </li>
+              )}
+              <li>
+                <span className="font-semibold text-white">Open Hours:</span>{" "}
+                7am - 6pm | Mon - Fri
+              </li>
             </ul>
-            <Link
-              href="/#contact"
-              className="mt-5 inline-block rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700"
-            >
-              Get a free quote
-            </Link>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-white/70">
+              Services
+            </h3>
+            <ul className="mt-6 space-y-3 text-base">
+              {servicePages.map((service) => (
+                <li key={service.slug}>
+                  <Link href={`/services/${service.slug}`} className="text-white/85 transition hover:text-white/70">
+                    {service.navLabel}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div id="areas">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-white/70">
+              Service Areas
+            </h3>
+            <ul className="mt-6 space-y-3 text-base text-white/85">
+              {serviceAreas.map((area) => (
+                <li key={area}>{area}</li>
+              ))}
+            </ul>
+          </div>
+
+          <nav aria-label="Company">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-white/70">
+              Company
+            </h3>
+            <ul className="mt-6 space-y-3 text-base">
+              {navLinks
+                .filter((link) => ["Projects", "Blog", "About", "Contact"].includes(link.label))
+                .map((link) => (
+                  <li key={`${link.label}-${link.href}`}>
+                    <Link href={link.href} className="text-white/85 transition hover:text-white/70">
+                      {link.label === "Projects" ? "Our Projects" : link.label}
+                    </Link>
+                  </li>
+                ))}
+              <li>
+                <Link href="/#contact" className="text-white/85 transition hover:text-white/70">
+                  Leave Feedback
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          <div className="md:col-span-2 lg:col-span-4">
+            <div className="mt-4 flex flex-col gap-6 border-t border-white/15 pt-10 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <Logo tone="light" />
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/55">
+                  Melbourne tiling, bathroom renovation and waterproofing
+                  services with clean workmanship and practical quote advice.
+                </p>
+                {socials.length > 0 && (
+                  <div className="mt-5 flex gap-4 text-sm">
+                    {socials.map((s) => (
+                      <a
+                        key={s.label}
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/60 transition hover:text-white"
+                      >
+                        {s.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/55">
+                {legalLinks.map((link) => (
+                  <Link key={link.href} href={link.href} className="transition hover:text-white">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-stone-100 pt-8 text-xs text-stone-500 sm:flex-row sm:items-center">
+        <div className="mt-10 border-t border-white/15 pt-8 text-sm text-white/55">
           <p>
-            © {new Date().getFullYear()} {site.legalName}. ABN {site.abn} ·
-            Licensed &amp; insured
+            © {new Date().getFullYear()} {site.legalName}. {credentialText}
           </p>
-          <div className="flex items-center gap-5">
-            {legalLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="transition hover:text-ink"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

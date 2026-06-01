@@ -28,8 +28,8 @@ const suburbs = [
 
 export function ServiceAreas() {
   return (
-    <section id="areas" className="bg-stone-50 py-24 sm:py-28">
-      <div className="mx-auto max-w-4xl px-6 text-center">
+    <section id="areas" className="bg-white py-24 sm:py-28">
+      <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
         <SectionHeading
           eyebrow="Where we work"
           title="Proudly servicing greater Melbourne"
@@ -40,12 +40,12 @@ export function ServiceAreas() {
           {suburbs.map((suburb) => (
             <span
               key={suburb}
-              className="rounded-full border border-stone-200 bg-white px-4 py-1.5 text-sm text-stone-600 transition hover:border-stone-300 hover:text-ink"
+              className="rounded-full border border-zinc-200 bg-porcelain px-4 py-1.5 text-sm text-zinc-600 transition hover:border-clay/40 hover:text-ink"
             >
               {suburb}
             </span>
           ))}
-          <span className="rounded-full bg-ink px-4 py-1.5 text-sm font-medium text-white">
+          <span className="rounded-full bg-sage px-4 py-1.5 text-sm font-medium text-white">
             + all of greater Melbourne
           </span>
         </Reveal>

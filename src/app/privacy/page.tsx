@@ -68,8 +68,14 @@ export default function PrivacyPage() {
       <h2>Contact us</h2>
       <p>
         For any privacy questions or requests, email{" "}
-        <a href={`mailto:${site.email}`}>{site.email}</a> or call{" "}
-        <a href={site.phone.href}>{site.phone.display}</a>.
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        {site.phone.href && (
+          <>
+            {" "}
+            or call <a href={site.phone.href}>{site.phone.display}</a>
+          </>
+        )}
+        .
       </p>
     </LegalPage>
   );

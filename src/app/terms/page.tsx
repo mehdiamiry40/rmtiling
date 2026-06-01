@@ -40,12 +40,12 @@ export default function TermsPage() {
         promptly so we can put things right.
       </p>
 
-      <h2>Workmanship guarantee</h2>
+      <h2>Workmanship & consumer guarantees</h2>
       <p>
-        We stand behind our work with a workmanship guarantee and use quality,
-        Australian-standard materials. Nothing in these terms limits any rights
-        you have under the <em>Australian Consumer Law</em>, which apply in
-        addition to our guarantee.
+        We stand behind our workmanship and use quality, Australian-standard
+        materials. Nothing in these terms limits any rights you have under the{" "}
+        <em>Australian Consumer Law</em>, including consumer guarantees that
+        apply to our services.
       </p>
 
       <h2>Liability</h2>
@@ -72,8 +72,14 @@ export default function TermsPage() {
       <h2>Contact us</h2>
       <p>
         Questions about these terms? Email{" "}
-        <a href={`mailto:${site.email}`}>{site.email}</a> or call{" "}
-        <a href={site.phone.href}>{site.phone.display}</a>.
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        {site.phone.href && (
+          <>
+            {" "}
+            or call <a href={site.phone.href}>{site.phone.display}</a>
+          </>
+        )}
+        .
       </p>
     </LegalPage>
   );

@@ -1,64 +1,57 @@
+import { Check } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
-import { LogoMark } from "./Logo";
 import { site } from "@/lib/site";
 
-const facts = [
-  { k: "Established", v: String(site.established) },
-  { k: "Based in", v: "Melbourne, VIC" },
-  { k: "Experience", v: `${site.yearsExperience} years` },
-  { k: "Workmanship", v: "Guaranteed" },
+const trustPoints = [
+  "On time and reliable",
+  "Local friendly business",
+  `${site.yearsExperience} years of experience`,
+  "Free fixed-price quotes",
 ];
 
 export function About() {
   return (
-    <section id="about" className="bg-white py-24 sm:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20">
+    <section id="about" className="bg-white py-20 sm:py-24">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-24">
         <div>
           <SectionHeading
             align="left"
-            eyebrow="About"
-            title="A local team that treats your home like our own"
+            eyebrow=""
+            title="About RM Tiling and Bathroom Renovations"
           />
-          <div className="mt-6 space-y-4 text-lg leading-relaxed text-stone-500">
+          <div className="mt-8 space-y-4 text-lg leading-relaxed text-ink">
             <p>
-              {site.name} is a Melbourne-based tiling and regrouting business
-              built on a simple idea: do honest, careful work and stand behind
-              it. From a small regrout to a full bathroom renovation, we bring
-              the same precision and tidy finish to every project.
+              Whether it is bathroom renovations, leaking shower bases,
+              regrouting tiles or new silicone, you can be confident that we
+              bring the practical experience and care needed for detailed wet
+              area work.
             </p>
             <p>
-              We're fully licensed and insured, quote upfront with no surprises,
-              and turn up when we say we will — so your tiles look sharp, keep
-              water where it belongs and last for years.
+              Every job starts with a clear quote and honest preparation advice,
+              then moves through waterproofing, set-out, tiling, grouting and
+              sealing with tidy site habits from start to finish.
             </p>
           </div>
-          <p className="mt-6 text-base font-medium text-ink">— Reza, Founder</p>
+          <a
+            href="#services"
+            className="mt-10 inline-flex border border-clay px-6 py-3 text-base font-semibold text-clay transition hover:bg-clay hover:text-white"
+          >
+            Learn More
+          </a>
         </div>
 
-        <Reveal delay={100}>
-          <div className="rounded-2xl border border-stone-200 bg-stone-50 p-8">
-            <div className="flex items-center gap-3">
-              <LogoMark className="h-9 w-9" />
-              <div>
-                <p className="font-display text-base font-semibold text-ink">
-                  {site.name}
-                </p>
-                <p className="text-sm text-stone-500">{site.tagline}</p>
-              </div>
-            </div>
-            <dl className="mt-6 divide-y divide-stone-200 border-t border-stone-200">
-              {facts.map((fact) => (
-                <div
-                  key={fact.k}
-                  className="flex items-center justify-between py-3.5 text-sm"
-                >
-                  <dt className="text-stone-500">{fact.k}</dt>
-                  <dd className="font-medium text-ink">{fact.v}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+        <Reveal delay={100} className="lg:pt-20">
+          <ul className="space-y-9">
+            {trustPoints.map((point) => (
+              <li key={point} className="flex items-center gap-6">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-clay text-white">
+                  <Check className="h-6 w-6" strokeWidth={2.4} aria-hidden />
+                </span>
+                <span className="text-lg font-medium text-ink">{point}</span>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>
