@@ -1,72 +1,98 @@
+import Image from "next/image";
+import Link from "next/link";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
 type Project = {
   title: string;
-  area: string;
   tag: string;
-  /** Tiles per row — varies the apparent tile format (large format → mosaic). */
-  grid: number;
-  /** Indices rendered as dark "feature" tiles. */
-  accents: number[];
+  description: string;
+  image: string;
+  alt: string;
 };
 
 const projects: Project[] = [
-  { title: "Floor-to-ceiling bathroom", area: "Brighton", tag: "Full renovation", grid: 3, accents: [4] },
-  { title: "Herringbone splashback", area: "Richmond", tag: "Kitchen", grid: 4, accents: [5, 10] },
-  { title: "Shower regrout & reseal", area: "Brunswick", tag: "Regrouting", grid: 3, accents: [2, 6] },
-  { title: "Large-format floor tiling", area: "Hawthorn", tag: "Flooring", grid: 2, accents: [3] },
-  { title: "Laundry renovation", area: "Box Hill", tag: "Renovation", grid: 3, accents: [0, 8] },
-  { title: "Outdoor patio tiling", area: "St Kilda", tag: "Outdoor", grid: 4, accents: [6, 9] },
+  {
+    title: "Bathroom Tiling and Waterproofing",
+    tag: "Bathroom Renovation",
+    description: "Large-format walls, frameless shower detailing and clean grout alignment for a modern wet-area finish.",
+    image: "/images/generated/bathroom-hero.webp",
+    alt: "Modern bathroom with large-format tiles and frameless shower glass",
+  },
+  {
+    title: "Kitchen Splashback Rework",
+    tag: "Kitchen Renovation",
+    description: "Warm ceramic splashbacks with tidy edges, neat outlet cuts and easy-clean surfaces.",
+    image: "/images/generated/kitchen-splashback.webp",
+    alt: "Warm off-white tiled kitchen splashback with timber shelving",
+  },
+  {
+    title: "Complete Shower Regrout and Reseal",
+    tag: "Bathroom Maintenance",
+    description: "Fresh grout and silicone lines for a cleaner shower finish and better moisture control.",
+    image: "/images/generated/shower-regrout.webp",
+    alt: "Clean shower corner with fresh grout and silicone sealing",
+  },
+  {
+    title: "Large Format Floor Tiling",
+    tag: "House Tiling",
+    description: "Level stone-look floors for bathrooms, laundries and open-plan living areas.",
+    image: "/images/generated/large-format-floor.webp",
+    alt: "Large-format stone-look floor tiles in a modern Australian home",
+  },
 ];
 
 export function Gallery() {
   return (
-    <section id="gallery" className="bg-stone-50 py-24 sm:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="gallery" className="bg-porcelain py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
-          eyebrow="Our work"
-          title="Recent projects"
-          description="Crisp lines, clean grout and a finish that lasts — across Melbourne."
+          eyebrow=""
+          title="Our Bathroom Renovation, Tiling and Waterproofing Projects"
+          description="Representative project-style visuals to help plan your quote. Verified RM Tiling project photos can be added as the portfolio grows."
         />
 
-        <div className="mt-16 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-x-16 gap-y-14 md:grid-cols-2">
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={(i % 3) * 70}>
-              <figure className="group">
-                <div className="rounded-2xl border border-stone-200 bg-white p-4 transition-colors group-hover:border-stone-300">
-                  <div
-                    className="grid gap-1.5"
-                    style={{
-                      gridTemplateColumns: `repeat(${project.grid}, minmax(0, 1fr))`,
-                    }}
-                  >
-                    {Array.from({ length: project.grid * project.grid }).map(
-                      (_, k) => (
-                        <div
-                          key={k}
-                          className={`aspect-square rounded-[3px] ${
-                            project.accents.includes(k)
-                              ? "bg-ink"
-                              : "bg-stone-200/70"
-                          }`}
-                        />
-                      ),
-                    )}
-                  </div>
+              <article className="group">
+                <div className="relative aspect-[1.45] overflow-hidden bg-linen">
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                  />
                 </div>
-                <figcaption className="mt-4">
-                  <span className="text-xs uppercase tracking-[0.15em] text-stone-500">
-                    {project.tag}
-                  </span>
-                  <p className="mt-1.5 text-base font-medium text-ink">
+                <div className="mt-5">
+                  <p className="text-sm font-medium text-clay">{project.tag}</p>
+                  <h3 className="mt-2 font-display text-2xl font-semibold leading-tight text-maroon">
                     {project.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-ink">
+                    {project.description}
                   </p>
-                  <p className="text-sm text-stone-500">{project.area}, VIC</p>
-                </figcaption>
-              </figure>
+                  <Link
+                    href="/#contact"
+                    className="mt-5 inline-flex text-base font-medium text-clay underline underline-offset-2 transition hover:text-maroon"
+                  >
+                    View project
+                  </Link>
+                </div>
+              </article>
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Link
+            href="/#contact"
+            className="inline-flex border border-clay px-7 py-4 text-base font-semibold text-clay transition hover:bg-clay hover:text-white"
+          >
+            View All Our Projects
+          </Link>
         </div>
       </div>
     </section>

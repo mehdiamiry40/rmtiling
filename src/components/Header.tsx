@@ -2,20 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Mail, Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { navLinks, site } from "@/lib/site";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -25,50 +17,47 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50">
-      <div
-        className={`border-b transition-colors duration-300 ${
-          scrolled
-            ? "border-stone-200 bg-white/85 backdrop-blur"
-            : "border-transparent bg-white"
-        }`}
-      >
-        <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+    <header className="sticky top-0 z-50 border-b border-zinc-100 bg-white">
+      <div>
+        <nav className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6">
           <Link href="/" aria-label={`${site.name} home`}>
             <Logo />
           </Link>
 
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-5 xl:flex">
             {navLinks.map((link) => (
               <Link
-                key={link.href}
+                key={`${link.label}-${link.href}`}
                 href={link.href}
-                className="text-sm text-stone-500 transition hover:text-ink"
+                className="text-[15px] font-medium text-zinc-700 transition hover:text-clay"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href={site.phone.href}
-              className="hidden text-sm font-medium text-ink transition hover:text-stone-600 sm:block"
-            >
-              {site.phone.display}
-            </a>
+          <div className="flex items-center gap-3">
+            {site.phone.href && (
+              <a
+                href={site.phone.href}
+                className="hidden text-[15px] font-semibold text-ink transition hover:text-clay md:block"
+              >
+                {site.phone.display}
+              </a>
+            )}
             <Link
-              href="/#contact"
-              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white transition hover:bg-stone-700 sm:inline-block"
+              href={site.bookingHref}
+              className="hidden border border-clay bg-clay px-5 py-3 text-sm font-semibold text-white transition hover:bg-maroon md:inline-flex"
             >
-              Get a quote
+              Book Online
             </Link>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center text-ink md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center text-ink transition hover:text-clay xl:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
+              aria-controls="mobile-menu"
             >
               {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -78,38 +67,49 @@ export function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="fixed inset-0 top-[65px] z-40 md:hidden">
+        <div id="mobile-menu" className="fixed inset-0 top-24 z-40 xl:hidden">
           <div
-            className="absolute inset-0 bg-white"
+            className="absolute inset-0 bg-black/20"
             onClick={() => setOpen(false)}
             aria-hidden
           />
-          <div className="relative border-t border-stone-200 bg-white px-6 py-6">
+          <div className="relative border-t border-zinc-200 bg-white px-6 py-6 shadow-xl">
             <div className="flex flex-col">
               {navLinks.map((link) => (
                 <Link
-                  key={link.href}
+                  key={`${link.label}-${link.href}`}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="border-b border-stone-100 py-4 text-lg font-medium text-ink"
+                  className="border-b border-zinc-100 py-4 text-lg font-medium text-ink transition hover:text-clay"
                 >
                   {link.label}
                 </Link>
               ))}
             </div>
             <div className="mt-6 flex flex-col gap-3">
-              <a
-                href={site.phone.href}
-                className="rounded-full border border-stone-300 px-5 py-3 text-center text-sm font-medium text-ink"
-              >
-                Call {site.phone.display}
-              </a>
+              {site.phone.href && (
+                <a
+                  href={site.phone.href}
+                  className="border border-zinc-300 bg-white px-5 py-3 text-center text-sm font-medium text-ink"
+                >
+                  Call {site.phone.display}
+                </a>
+              )}
+              {!site.phone.href && (
+                <a
+                  href={`mailto:${site.email}`}
+                  className="inline-flex items-center justify-center gap-2 border border-zinc-300 bg-white px-5 py-3 text-center text-sm font-medium text-ink"
+                >
+                  <Mail className="h-4 w-4" aria-hidden />
+                  Email us
+                </a>
+              )}
               <Link
-                href="/#contact"
+                href={site.bookingHref}
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-ink px-5 py-3 text-center text-sm font-medium text-white"
+                className="bg-clay px-5 py-3 text-center text-sm font-medium text-white"
               >
-                Get a free quote
+                Book Online
               </Link>
             </div>
           </div>

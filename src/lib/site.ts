@@ -10,19 +10,20 @@
 export const site = {
   name: "RM Tiling",
   legalName: "RM Tiling Pty Ltd",
-  tagline: "Melbourne's Tiling & Regrouting Specialists",
+  tagline: "Tiling | Bathroom Renovations",
   description:
-    "RM Tiling are Melbourne-based tiling and regrouting specialists. Wall and floor tiling, regrouting, leaking shower repairs, waterproofing and bathroom renovations. Free quotes, fully licensed and insured.",
+    "RM Tiling are Melbourne-based tiling and regrouting specialists. Wall and floor tiling, regrouting, leaking shower repairs, waterproofing and bathroom renovations. Free quotes and careful workmanship.",
 
-  // Contact details — update these with your real numbers.
+  // Contact details. Leave phone blank until the real number is confirmed.
   phone: {
-    display: "0411 123 456",
-    href: "tel:+61411123456",
+    display: "" as string,
+    href: "" as string,
   },
   email: "info@rmtiling.com.au",
+  bookingHref: "/#contact",
 
-  // Business details
-  abn: "12 345 678 901",
+  // Business details. Leave ABN blank until the real number is confirmed.
+  abn: "",
   established: 2009,
   yearsExperience: "15+",
   serviceArea: "Melbourne & surrounding suburbs",
@@ -43,21 +44,28 @@ export const site = {
     country: "AU",
   },
 
-  // Social links — replace # with your real profile URLs (or remove).
+  heroImage: {
+    src: "/images/generated/bathroom-hero.webp",
+    alt: "Modern bathroom with large-format tiles, a frameless shower and clean grout lines",
+  },
+
+  // Social links. Empty values are hidden from the footer and structured data.
   social: {
-    facebook: "#",
-    instagram: "#",
-    google: "#",
+    facebook: "",
+    instagram: "",
+    google: "",
   },
 } as const;
 
 /** Top-level navigation links (root-relative so they work from any page). */
 export const navLinks = [
-  { label: "Services", href: "/#services" },
+  { label: "Tiling", href: "/services/tiling-melbourne" },
+  { label: "Bathroom Renovations", href: "/services/bathroom-renovations-melbourne" },
+  { label: "Waterproofing", href: "/services/waterproofing-melbourne" },
+  { label: "Projects", href: "/#gallery" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/#about" },
-  { label: "Work", href: "/#gallery" },
-  { label: "Reviews", href: "/#reviews" },
-  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 /** Footer-only legal links. */

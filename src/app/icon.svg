@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-  <rect width="40" height="40" rx="9" fill="#1c1917"/>
-  <g fill="#ffffff">
-    <rect x="8" y="8" width="10" height="10" rx="2.5" opacity="0.95"/>
-    <rect x="22" y="8" width="10" height="10" rx="2.5" opacity="0.5"/>
-    <rect x="8" y="22" width="10" height="10" rx="2.5" opacity="0.5"/>
-    <rect x="22" y="22" width="10" height="10" rx="2.5" opacity="0.95"/>
+  <rect width="40" height="40" fill="#ffffff"/>
+  <g transform="rotate(45 20 20)">
+    <rect x="7" y="7" width="11" height="11" fill="#8f1710"/>
+    <rect x="22" y="7" width="11" height="11" fill="#a62218"/>
+    <rect x="7" y="22" width="11" height="11" fill="#a62218"/>
+    <rect x="22" y="22" width="11" height="11" fill="#4b0507"/>
+    <path d="M7 20h26M20 7v26" stroke="#ffffff" stroke-width="2"/>
   </g>
 </svg>

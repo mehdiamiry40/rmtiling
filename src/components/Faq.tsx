@@ -9,9 +9,9 @@ const faqs = [
       "Yes. Every quote is free, no-obligation and fixed-price. We'll assess your space, talk through your options and give you a clear written quote with no hidden extras.",
   },
   {
-    question: "Are you licensed and insured?",
+    question: "What details do you provide before work starts?",
     answer:
-      "Absolutely. RM Tiling are fully qualified, licensed tilers and we carry full public liability insurance, so you're completely covered while we work in your home.",
+      "We provide a written quote with scope, price, timing and practical preparation notes. We can also confirm the business and trade details relevant to your job before booking.",
   },
   {
     question: "Can you fix a leaking shower without removing the tiles?",
@@ -24,9 +24,9 @@ const faqs = [
       "Most regrouting and resealing jobs are completed within a day. Larger areas or full bathrooms may take a little longer — we'll give you an accurate timeframe with your quote.",
   },
   {
-    question: "Do you guarantee your work?",
+    question: "How do you stand behind the work?",
     answer:
-      "Every job is backed by our workmanship guarantee. We use quality, Australian-standard materials and proper waterproofing so your tiles look great and last for years.",
+      "We stand behind careful workmanship and use quality, Australian-standard materials and proper waterproofing practices so your tiles look great and last for years.",
   },
   {
     question: "Which areas of Melbourne do you service?",
@@ -47,26 +47,26 @@ export function Faq() {
   };
 
   return (
-    <section id="faq" className="bg-white py-24 sm:py-28">
-      <div className="mx-auto max-w-3xl px-6">
+    <section id="faq" className="bg-porcelain py-24 sm:py-28">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="FAQ"
           title="Questions, answered"
           description="The things Melbourne homeowners ask us most."
         />
 
-        <div className="mt-14 divide-y divide-stone-200 border-t border-stone-200">
+        <div className="mt-14 overflow-hidden rounded-lg border border-zinc-200 bg-white">
           {faqs.map((faq, i) => (
             <Reveal key={faq.question} delay={(i % 3) * 60}>
               <details className="group">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-base font-medium text-ink transition hover:text-stone-600 [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 border-b border-zinc-100 px-5 py-5 text-base font-medium text-ink transition hover:text-clay [&::-webkit-details-marker]:hidden">
                   {faq.question}
                   <Plus
-                    className="h-5 w-5 shrink-0 text-stone-500 transition-transform duration-200 group-open:rotate-45"
+                    className="h-5 w-5 shrink-0 text-zinc-500 transition-transform duration-200 group-open:rotate-45"
                     aria-hidden
                   />
                 </summary>
-                <p className="pb-6 pr-8 text-[15px] leading-relaxed text-stone-500">
+                <p className="border-b border-zinc-100 px-5 pb-6 pr-10 text-[15px] leading-relaxed text-zinc-500">
                   {faq.answer}
                 </p>
               </details>

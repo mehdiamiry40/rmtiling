@@ -1,19 +1,28 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/*  RM Tiling — minimalist design tokens                              */
-/*  Warm monochrome (stone neutrals) + near-black ink. No accent.     */
+/*  RM Tiling — service-business design tokens                        */
+/*  Pale plaster backgrounds, deep burgundy headings, navy footer.     */
 /* ------------------------------------------------------------------ */
 @theme {
-  --color-ink: #1c1917;
+  --color-ink: #142124;
+  --color-charcoal: #101827;
+  --color-porcelain: #f5f7fa;
+  --color-linen: #eef1f4;
+  --color-clay: #8f1710;
+  --color-sage: #8f1710;
+  --color-moss: #4b0507;
+  --color-maroon: #310005;
+  --color-navy: #101827;
+  --color-oxide: #a62218;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #1c1917;
+  --background: #f6f8f5;
+  --foreground: #142124;
 }
 
 body {
@@ -22,7 +31,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  letter-spacing: -0.011em;
+  letter-spacing: 0;
 }
 
 /* Smooth in-page anchor scrolling, offset for the sticky header. */
@@ -55,6 +64,29 @@ section[id] {
   background-size: 44px 44px;
 }
 
+@utility tile-diagonal {
+  background-image: linear-gradient(
+    135deg,
+    color-mix(in srgb, currentColor 12%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+}
+
+@utility tile-hatch {
+  background-image: linear-gradient(
+      45deg,
+      color-mix(in srgb, currentColor 12%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      -45deg,
+      color-mix(in srgb, currentColor 9%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 20px 20px;
+}
+
 /* Subtle reveal-on-scroll. */
 @keyframes reveal-in {
   from {
@@ -84,6 +116,6 @@ section[id] {
 }
 
 ::selection {
-  background: #1c1917;
+  background: #154a4d;
   color: #ffffff;
 }

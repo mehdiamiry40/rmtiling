@@ -4,11 +4,10 @@ export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
 export default function AppleIcon() {
-  const tile = (opacity: number) => ({
-    width: 46,
-    height: 46,
-    borderRadius: 11,
-    background: `rgba(255,255,255,${opacity})`,
+  const tile = (background: string) => ({
+    width: 42,
+    height: 42,
+    background,
   });
 
   return new ImageResponse(
@@ -20,14 +19,22 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#1c1917",
+          background: "#ffffff",
         }}
       >
-        <div style={{ display: "flex", flexWrap: "wrap", width: 104, gap: 12 }}>
-          <div style={tile(0.95)} />
-          <div style={tile(0.5)} />
-          <div style={tile(0.5)} />
-          <div style={tile(0.95)} />
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            width: 96,
+            gap: 12,
+            transform: "rotate(45deg)",
+          }}
+        >
+          <div style={tile("#8f1710")} />
+          <div style={tile("#a62218")} />
+          <div style={tile("#a62218")} />
+          <div style={tile("#4b0507")} />
         </div>
       </div>
     ),

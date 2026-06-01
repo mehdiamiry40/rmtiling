@@ -14,22 +14,25 @@ export function SectionHeading({
   tone?: "dark" | "light";
 }) {
   const isLight = tone === "light";
+  const hasEyebrow = eyebrow.trim().length > 0;
   return (
     <Reveal
       className={
         align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"
       }
     >
-      <span
-        className={`text-xs font-medium uppercase tracking-[0.2em] ${
-          isLight ? "text-white/50" : "text-stone-500"
-        }`}
-      >
-        {eyebrow}
-      </span>
+      {hasEyebrow && (
+        <span
+          className={`text-xs font-semibold uppercase tracking-[0.08em] ${
+            isLight ? "text-white/60" : "text-clay"
+          }`}
+        >
+          {eyebrow}
+        </span>
+      )}
       <h2
-        className={`mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl ${
-          isLight ? "text-white" : "text-ink"
+        className={`${hasEyebrow ? "mt-4" : ""} font-display text-4xl font-semibold leading-tight sm:text-5xl ${
+          isLight ? "text-white" : "text-maroon"
         }`}
       >
         {title}
@@ -37,7 +40,7 @@ export function SectionHeading({
       {description && (
         <p
           className={`mt-4 text-lg leading-relaxed ${
-            isLight ? "text-white/60" : "text-stone-500"
+            isLight ? "text-white/60" : "text-zinc-500"
           }`}
         >
           {description}
