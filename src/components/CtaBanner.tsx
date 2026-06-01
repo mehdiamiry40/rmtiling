@@ -27,7 +27,7 @@ export function CtaBanner() {
               href={site.bookingHref}
               className="inline-flex items-center justify-center bg-white px-8 py-3 text-base font-semibold text-clay transition hover:bg-maroon hover:text-white"
             >
-              Book Online
+              Get a quote
             </a>
           </div>
         </div>

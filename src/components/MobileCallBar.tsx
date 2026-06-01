@@ -42,7 +42,7 @@ export function MobileCallBar() {
           href={site.bookingHref}
           className="flex flex-[1.4] items-center justify-center bg-clay px-4 py-3 text-sm font-medium text-white"
         >
-          Book Online
+          Get a quote
         </Link>
       </div>
     </div>

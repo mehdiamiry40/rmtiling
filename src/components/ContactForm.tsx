@@ -61,7 +61,7 @@ export function ContactForm() {
   if (status === "success" || status === "emailFallback") {
     return (
       <div className="flex h-full flex-col items-center justify-center rounded-lg border border-zinc-200 bg-white p-10 text-center shadow-sm shadow-zinc-200/60">
-        <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-sage text-white">
+        <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-success text-white">
           <Check className="h-6 w-6" />
         </span>
         <h3 className="mt-5 font-display text-xl font-semibold text-ink">

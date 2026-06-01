@@ -11,8 +11,13 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    if (open) document.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
 
@@ -49,7 +54,7 @@ export function Header() {
               href={site.bookingHref}
               className="hidden border border-clay bg-clay px-5 py-3 text-sm font-semibold text-white transition hover:bg-maroon md:inline-flex"
             >
-              Book Online
+              Get a quote
             </Link>
             <button
               type="button"
@@ -109,7 +114,7 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 className="bg-clay px-5 py-3 text-center text-sm font-medium text-white"
               >
-                Book Online
+                Get a quote
               </Link>
             </div>
           </div>

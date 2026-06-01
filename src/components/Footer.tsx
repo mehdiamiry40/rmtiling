@@ -51,8 +51,14 @@ export function Footer() {
                 </li>
               )}
               <li>
-                <span className="font-semibold text-white">Open Hours:</span>{" "}
-                7am - 6pm | Mon - Fri
+                <span className="font-semibold text-white">Open Hours:</span>
+                <div className="mt-1 space-y-0.5">
+                  {site.hours.map((slot) => (
+                    <div key={slot.days}>
+                      {slot.days}: {slot.time}
+                    </div>
+                  ))}
+                </div>
               </li>
             </ul>
           </div>

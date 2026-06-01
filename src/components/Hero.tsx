@@ -37,9 +37,9 @@ export function Hero() {
             {site.phone.href ? site.phone.display : "Email us"}
           </a>
           <span className="text-base text-white/88">
-            or make an{" "}
+            or{" "}
             <a href={site.bookingHref} className="underline decoration-white underline-offset-2 hover:text-white">
-              online booking
+              request a free quote
             </a>
           </span>
         </div>
