@@ -92,9 +92,15 @@ export function Footer() {
                 .filter((link) => ["Projects", "Blog", "About", "Contact"].includes(link.label))
                 .map((link) => (
                   <li key={`${link.label}-${link.href}`}>
-                    <Link href={link.href} className="text-white/85 transition hover:text-white/70">
-                      {link.label === "Projects" ? "Our Projects" : link.label}
-                    </Link>
+                    {link.href.startsWith("/#") ? (
+                      <a href={link.href} className="text-white/85 transition hover:text-white/70">
+                        {link.label === "Projects" ? "Our Projects" : link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className="text-white/85 transition hover:text-white/70">
+                        {link.label === "Projects" ? "Our Projects" : link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               <li>

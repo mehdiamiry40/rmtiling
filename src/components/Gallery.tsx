@@ -78,7 +78,7 @@ export function Gallery() {
                     href="/#contact"
                     className="mt-5 inline-flex text-base font-medium text-clay underline underline-offset-2 transition hover:text-maroon"
                   >
-                    View project
+                    Request similar work
                   </Link>
                 </div>
               </article>
@@ -91,7 +91,7 @@ export function Gallery() {
             href="/#contact"
             className="inline-flex border border-clay px-7 py-4 text-base font-semibold text-clay transition hover:bg-clay hover:text-white"
           >
-            View All Our Projects
+            Discuss your project
           </Link>
         </div>
       </div>

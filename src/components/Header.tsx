@@ -25,15 +25,25 @@ export function Header() {
           </Link>
 
           <div className="hidden items-center gap-5 xl:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={`${link.label}-${link.href}`}
-                href={link.href}
-                className="text-[15px] font-medium text-zinc-700 transition hover:text-clay"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith("/#") ? (
+                <a
+                  key={`${link.label}-${link.href}`}
+                  href={link.href}
+                  className="text-[15px] font-medium text-zinc-700 transition hover:text-clay"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={`${link.label}-${link.href}`}
+                  href={link.href}
+                  className="text-[15px] font-medium text-zinc-700 transition hover:text-clay"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
           </div>
 
           <div className="flex items-center gap-3">
@@ -67,16 +77,27 @@ export function Header() {
           />
           <div className="relative border-t border-zinc-200 bg-white px-6 py-6 shadow-xl">
             <div className="flex flex-col">
-              {navLinks.map((link) => (
-                <Link
-                  key={`${link.label}-${link.href}`}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="border-b border-zinc-100 py-4 text-lg font-medium text-ink transition hover:text-clay"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.href.startsWith("/#") ? (
+                  <a
+                    key={`${link.label}-${link.href}`}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-zinc-100 py-4 text-lg font-medium text-ink transition hover:text-clay"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={`${link.label}-${link.href}`}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-zinc-100 py-4 text-lg font-medium text-ink transition hover:text-clay"
+                  >
+                    {link.label}
+                  </Link>
+                ),
+              )}
             </div>
             <div className="mt-6 flex flex-col gap-3">
               <a
