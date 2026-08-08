@@ -2,6 +2,12 @@ import Image from "next/image";
 import { Mail } from "lucide-react";
 import { site } from "@/lib/site";
 
+const heroHighlights = [
+  "Bathroom tiling, waterproofing & regrouting",
+  "Free fixed-price quotes",
+  "Clean workmanship from prep to finish",
+] as const;
+
 export function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-maroon text-white">
@@ -25,6 +31,17 @@ export function Hero() {
           {site.name} provides high quality tiling, regrouting, bathroom
           renovations and waterproofing across Melbourne.
         </p>
+
+        <ul className="mt-8 flex w-full max-w-2xl flex-col gap-3 text-sm font-semibold text-white/90 sm:text-base">
+          {heroHighlights.map((highlight) => (
+            <li key={highlight} className="flex items-start gap-3">
+              <span className="mt-0.5 font-display text-xl leading-none text-clay" aria-hidden>
+                &gt;
+              </span>
+              <span className="leading-snug drop-shadow-sm">{highlight}</span>
+            </li>
+          ))}
+        </ul>
 
         <div className="mt-12 flex flex-col items-start justify-center gap-5 sm:flex-row sm:items-center">
           <a
