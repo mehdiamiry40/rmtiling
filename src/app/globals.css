@@ -10,18 +10,17 @@
   --color-porcelain: #f5f7fa;
   --color-linen: #eef1f4;
   --color-clay: #8f1710;
-  --color-sage: #8f1710;
-  --color-moss: #4b0507;
   --color-maroon: #310005;
   --color-navy: #101827;
   --color-oxide: #a62218;
+  --color-success: #15803d;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: Georgia, "Times New Roman", serif;
 }
 
 :root {
-  --background: #f6f8f5;
+  --background: #ffffff;
   --foreground: #142124;
 }
 
@@ -116,6 +115,6 @@ section[id] {
 }
 
 ::selection {
-  background: #154a4d;
+  background: #8f1710;
   color: #ffffff;
 }

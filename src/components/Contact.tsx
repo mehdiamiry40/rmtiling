@@ -38,7 +38,7 @@ export function Contact() {
             <div className="flex items-start gap-4 py-5">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-clay" strokeWidth={1.5} aria-hidden />
               <div>
-                <dt className="text-xs uppercase text-white/45">
+                <dt className="text-xs uppercase text-white/65">
                   Opening hours
                 </dt>
                 <dd className="mt-1.5 space-y-0.5 text-sm text-white/65">
@@ -82,7 +82,7 @@ function ContactRow({
     <div className="flex items-start gap-4 py-5">
       <Icon className="mt-0.5 h-4 w-4 shrink-0 text-clay" strokeWidth={1.5} aria-hidden />
       <div>
-        <dt className="text-xs uppercase text-white/45">
+        <dt className="text-xs uppercase text-white/65">
           {label}
         </dt>
         <dd className="mt-1 text-base font-medium text-white">
